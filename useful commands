@@ -1,1 +1,5 @@
-sudo mount -t cifs //name/share /mnt -o username=username
+# mount samba share
+  sudo mount -t cifs //name/share /mnt -o username=username
+
+# test samba configuration
+  testparm
