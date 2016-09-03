@@ -1,3 +1,3 @@
-# dotfiles
+# files
 
-Just my personal dotfiles.
+Just some of my personal files
