@@ -1,0 +1,1 @@
+sudo mount -t cifs //name/share /mnt -o username=username
