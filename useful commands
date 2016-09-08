@@ -4,3 +4,6 @@
 
 # test samba configuration
   testparm
+  
+# Put the drive into idle (low-power) mode, and also set the standby (spindown) timeout for the drive.
+  hdparm -S 60 /dev/sdc
