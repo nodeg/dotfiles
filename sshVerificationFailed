@@ -12,6 +12,10 @@
 #RSA host key for pong has changed and you have requested strict checking.
 #Host key verification failed.
 
+# Simple solution:
+
 ssh-keygen -R <host>
+
 #or
+
 ssh-keygen -R <hostname>
