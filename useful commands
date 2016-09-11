@@ -7,3 +7,6 @@
   
 # Put the drive into idle (low-power) mode, and also set the standby (spindown) timeout for the drive.
   hdparm -S 60 /dev/sdc
+  
+# update pacman mirrorlist via reflector
+  reflector --verbose -l 10 --sort rate --save /etc/pacman.d/mirrorlist
