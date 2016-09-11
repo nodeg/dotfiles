@@ -1,7 +1,7 @@
 # files from AUR
 
--cower
--pacaur
+-cower (no arm)
+-pacaur (no arm)
 -ls++
 -nano-syntax-highlighting
--google-chrome
+-google-chrome (no arm)
