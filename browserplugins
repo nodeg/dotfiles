@@ -1,0 +1,14 @@
+-uBlock Origin
+-HTTPS-Everywhere
+-Privacy Badger
+-FlagFox
+-Cookie Controller
+-CanvasBlocker
+-No Resource URI Leak
+-Privacy Settings
+-Lightbeam
+
+(-User Agent Switcher)
+(-DNSSEC/TLSA Validator)
+(-Video DownloadHelper)
+
