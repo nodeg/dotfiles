@@ -1,12 +1,12 @@
 # mount samba share
-  sudo mount -t cifs //name/share /mnt -o username=username
-  sudo mount -t smbfs //name/share /mnt -o username=username
+  sudo mount -t cifs //name/share /mnt -o username=username,password=password
+  #sudo mount -t smbfs //name/share /mnt -o username=username
 
 # test samba configuration
   testparm
   
 # Put the drive into idle (low-power) mode, and also set the standby (spindown) timeout for the drive.
-  hdparm -S 60 /dev/sdc
+  hdparm -S 60 /dev/sdX
   
 # update pacman mirrorlist via reflector
   reflector --verbose -l 10 --sort rate --save /etc/pacman.d/mirrorlist
