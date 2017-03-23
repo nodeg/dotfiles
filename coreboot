@@ -1,0 +1,89 @@
+Stuff for coreboot to built.
+
+sudo apt-get update && sudo apt-get install libftdi1 libftdi-dev libusb-dev libpci-dev subversion build-essential pciutils usbutils libpci-dev libftdi1 zlib1g-dev libncurses5-dev libncursesw5-dev libusb-1.0-0-dev m4 bison flex
+
+# /etc/modules
+sudo modprobe spi_bcm2835
+sudo modprobe spidev
+
+# /boot/config.txt
+dtparam=spi=on
+enable_uart=1
+
+# flashrom
+$ svn co https://code.coreboot.org/svn/flashrom/trunk flashrom
+$ cd flashrom
+$ make
+# The next step is optional!
+$ sudo make install
+
+
+# coreboot
+git clone http://review.coreboot.org/coreboot.git ~/coreboot
+cd ~/coreboot
+git submodule update --init --recursive
+cd ~/coreboot/util/ifdtool
+make
+sudo make install
+cd ~
+ifdtool -x ~/flash01.bin
+mkdir -p ~/coreboot/3rdparty/blobs/mainboard/lenovo/x220
+cd ~/coreboot/3rdparty/blobs/mainboard/lenovo/x220
+mv ~/flashregion_0_flashdescriptor.bin descriptor.bin
+mv ~/flashregion_2_intel_me.bin me.bin
+mv ~/flashregion_3_gbe.bin gbe.bin
+
+make nconfig
+
+general
+    - [*] Compress ramstage with LZMA
+    - [*] Include coreboot .config file into the ROM image
+    - [*] Allow use of binary-only repository
+mainboard
+    -  Mainboard vendor (Lenovo)
+    -  Mainboard model (ThinkPad T420)
+    -  ROM chip size (8192 KB (8 MB))
+    -  (0x300000) Size of CBFS filesystem in ROM
+chipset
+    - [*] Enable VMX for virtualization
+    -  Include CPU microcode in CBFS (Generate from tree)
+    -  Flash ROM locking on S3 resume (Don't lock ROM sections on S3 resume)
+    - [*] Add Intel descriptor.bin file
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename of the descriptor.bin file
+    - [*] Add Intel ME/TXE firmware
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
+    - [*] Add gigabit ethernet firmware
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet firmware
+devices
+    - [*] Use native graphics initialization
+display
+    - (nothing checked)
+generic drivers
+    - [*] Support Intel PCI-e WiFi adapters
+    - [*] PS/2 keyboard init
+console
+    - [*] Squelch AP CPUs from early console.
+      [*] Show POST codes on the debug console
+system tables
+    - [*] Generate SMBIOS tables
+payload
+    - Add a payload (SeaBIOS)
+    - SeaBIOS version (master)
+    - (3000) PS/2 keyboard controller initialization timeout (milliseconds)
+    - [*] Harware init during option ROM execution
+    - [*] Include generated option rom that implements legacy VGA BIOS compatibility
+    - [*] Use LZMA compression for payloads
+debugging
+    - (nothing checked)
+    
+    
+make crossgcc-i386 CPUS=4
+make iasl
+make
+
+
+# sources
+https://www.coreboot.org/Build_HOWTO
+https://www.coreboot.org/Board:lenovo/t420
+https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi
+https://github.com/bibanon/Coreboot-ThinkPads/wiki/Hardware-Flashing-with-Raspberry-Pi
