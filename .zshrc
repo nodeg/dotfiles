@@ -13,20 +13,20 @@ alias rm='rm -I --preserve-root'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-alias ll='ls++ -lh'
-alias la='ls++ -lha'
+alias ll='ls -lh'
+alias la='ls -lha'
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
 alias df='df -h'
 alias du='du -h'
 alias mc='mc -b'
 alias sshu='ssh faui0sr0.cs.fau.de'
-alias home='/home/dom'
+alias home='cd /home/dom'
 alias gpp='g++ -std=c++11'
 
 # colors
-BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
+#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # colored less
 export LESS_TERMCAP_mb=$'\E[01;31m'
