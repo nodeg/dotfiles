@@ -23,6 +23,9 @@ alias mc='mc -b'
 alias sshu='ssh faui0sr0.cs.fau.de'
 alias home='cd /home/dom'
 alias gpp='g++ -std=c++11'
+alias gcc='gcc -g -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700'
+alias valgrind='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+
 
 # colors
 #BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
