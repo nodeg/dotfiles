@@ -1,17 +1,7 @@
 Chromium/Chrome
 -uBlock Origin
--HTTPS-Everywhere
+-uBlock Protector Extension
+-Smart HTTPS
 -Decentraleyes
-
-Firefox
--Privacy Badger
--FlagFox
--Cookie Controller
--CanvasBlocker
--No Resource URI Leak
--Privacy Settings
--Lightbeam
-(-User Agent Switcher)
-(-DNSSEC/TLSA Validator)
-(-Video DownloadHelper)
+- Keepa
 
