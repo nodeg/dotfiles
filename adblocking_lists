@@ -1,0 +1,16 @@
+https://adaway.org/hosts.txt
+http://www.malwaredomainlist.com/hostslist/hosts.txt
+http://winhelp2002.mvps.org/hosts.txt
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+http://sysctl.org/cameleon/hosts
+http://hosts-file.net/ad_servers.txt
+https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt
+https://easylist.to/easylist/easylist.txt
+https://easylist.to/easylist/fanboy-annoyance.txt
+https://easylist.to/easylistgermany/easylistgermany.txt
+https://easylist.to/easylist/easyprivacy.txt
+https://easylist.to/easylist/fanboy-social.txt
+https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+https://github.com/AdguardTeam/AdguardFilters/blob/master/MobileFilter/sections/spyware.txt
+https://github.com/AdguardTeam/AdguardFilters/blob/master/MobileFilter/sections/adservers.txt
