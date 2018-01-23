@@ -10,3 +10,12 @@ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.
 - Install chromium and google-chrome (AUR)
 - Link to the widevine library from Google Chrome: ln -s /opt/google/chrome/libwidevinecdm.so /usr/lib/chromium/libwidevinecdm.so
 - Restart chromium
+
+# Browser Plugins
+
+- uBlock Origin
+- Nano Defender
+- Smart HTTPS
+- Keepa
+- Decentraleyes
+(- h264ify)
