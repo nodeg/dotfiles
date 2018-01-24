@@ -1,0 +1,5 @@
+# Mutter problems in GNOME 3.26 (Wayland) with 2 graphic cards
+
+  'Can't initialize KMS backend: could not find drm kms'
+
+  Solution: Add 'MUTTER_ALLOW_HYBRID_GPUS=1' to /etc/environment.
