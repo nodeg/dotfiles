@@ -3,3 +3,29 @@
   'Can't initialize KMS backend: could not find drm kms'
 
   Solution: Add 'MUTTER_ALLOW_HYBRID_GPUS=1' to /etc/environment.
+  
+# ACPI Warnings in dmesg:
+
+  'ACPI Warning: SystemIO range 0x0000000000000428-0x000000000000042F conflicts with OpRegion 0x0000000000000400-0x000000000000047F (\PMIO) (20170728/utaddress-247)'
+  
+  * Blacklist some modules in /etc/modprobe.d
+  
+    /etc/modprobe.d/blacklist.conf
+      blacklist pcspkr
+      blacklist lpc_ich
+      blacklist gpio-ich
+      
+  * Rebuild initramfs
+  
+  
+ # Intel i915 errors in dmesg:
+  '[drm:intel_set_cpu_fifo_underrun_reporting [i915]] *ERROR* uncleared fifo underrun on pipe A
+   [drm:intel_cpu_fifo_underrun_irq_handler [i915]] *ERROR* CPU pipe A FIFO underrun
+   [drm:intel_set_pch_fifo_underrun_reporting [i915]] *ERROR* uncleared pch fifo underrun on pch transcoder A
+   [drm:cpt_irq_handler [i915]] *ERROR* PCH transcoder A FIFO underrun'
+   
+   * Special kernel parameter: intel_iommu=on
+   * Using integradted i7-3770 igfx with KMS and no intel driver
+   
+   No solution yet (Kernel 4.14.15-1).
+
