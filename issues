@@ -25,7 +25,7 @@
    [drm:cpt_irq_handler [i915]] *ERROR* PCH transcoder A FIFO underrun'
    
    * Special kernel parameter: intel_iommu=on
-   * Using integradted i7-3770 igfx with KMS and no intel driver
+   * Using integrated i7-3770 igfx with KMS and no intel driver
    
-   No solution yet (Kernel 4.14.15-1).
+   No solution yet (Kernel 4.15.11-1).
 
