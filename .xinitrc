@@ -1,32 +1,46 @@
-# run scripts in /etc/X11/xinit/xinitrc.d
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-      [ -x "$f" ] && . "$f"
-  done
-  unset f
-fi &
+#!/bin/sh
 
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# display dwm status bar
-while true; do
-	slstatus
-	sleep 2
-done &
+# merge in defaults and keymaps
 
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
 
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
 
-# set wallpaper
-feh --bg-fill /home/dom/wallpaper/tree.jpg &
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
 
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+# start some nice programs
+
+# set background - now in i3 config file
+#feh --bg-fill ~/wallpaper/linux.jpg & 
+
+# conky 
+#conky -c /home/dom/.conkyrc
 
 
 # auto lock after a minute
-xautolock -time 1 -locker slock -corners 0-00 &
+xautolock -time 1 -locker slock -corners -00- -secure &  
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
 
 
-# modify keyboard layout
-#xmodmap ~/.Xmodmap &
-
-
-#DWM
-exec /home/dom/.dwm-start
+exec i3
