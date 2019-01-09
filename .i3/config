@@ -182,9 +182,8 @@ bar
 }
 
 # Startup programs
-#exec /home/dom/.xrandr # External monitor settings
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -f # Compositor for window transparency
-exec /home/dom/.i3/i3scripts/xrandr
+exec /home/dom/.i3/i3scripts/xrandr # External monitor settings
 exec --no-startup-id feh --bg-fill /home/dom/wallpaper/linux.jpg
