@@ -1,3 +1,3 @@
 # files
 
-Just some of my personal files and usefull commands.
+Just some of my personal files and useful commands.
