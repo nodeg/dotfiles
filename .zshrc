@@ -1,10 +1,6 @@
-# ~/.zshrc
-
-
-# editor
-export EDITOR="nano"
-
-# aliases
+# doms .zshrc
+#
+### aliases ###
 alias ..='cd ..'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -13,23 +9,26 @@ alias rm='rm -I --preserve-root'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-alias ll='ls -lh'
-alias la='ls -lha'
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
 alias df='df -h'
 alias du='du -h'
 alias mc='mc -b'
-alias sshu='ssh faui0sr0.cs.fau.de'
+alias ll='ls -lh --color=auto'
+alias la='ls -lah --color=auto'
 alias home='cd /home/dom'
-alias gpp='g++ -std=c++11'
-alias gcc='gcc -g -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700'
-alias valgrind='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+alias hgit='cd /home/dom/git'
+alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
+alias sshu='ssh faui0sr0.cs.fau.de'
+alias makec='make clean'
 
 
-# colors
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
-#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+### exports ###
+
+# editor
+export EDITOR='vim'
+
+export LD_LIBRARY_PATH='/home/dom/git/libeconf/lib/.libs'
 
 # colored less
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -40,14 +39,22 @@ export LESS_TERMCAP_so=$'\E[01;47;34m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export LESS=-r
+export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
+# for pure prompt to work
+export FPATH=$HOME/git/pure:$FPATH
 
-# completion
+# completion and prompt
 autoload -U colors && colors
 autoload -U compinit
 compinit
 
-#### special functions ####
+# pure prompt
+autoload -U promptinit && promptinit
+prompt pure
+
+
+### special functions ###
 
 # colored man pages
 man() {
@@ -88,3 +95,7 @@ extract() {
 mcd() {
     mkdir -p "$@" && cd "$@"
 }
+
+# zsh stuff
+source /home/dom/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/dom/git/zsh-autosuggestions/zsh-autosuggestions.zsh
