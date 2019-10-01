@@ -22,12 +22,11 @@ alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --trac
 alias sshu='ssh faui0sr0.cs.fau.de'
 alias makec='make clean'
 
-
 ### exports ###
 
 # editor
 export EDITOR='vim'
-
+export TERM=xterm-256color
 export LD_LIBRARY_PATH='/home/dom/git/libeconf/lib/.libs'
 
 # colored less
