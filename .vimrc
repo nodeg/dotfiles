@@ -51,4 +51,3 @@ set showmatch
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
 
-map <F8> :w <CR> :!gcc -std=c11 -pedantic -Wall  -g3 -L/home/dom/git/libeconf/lib/.libs -leconf -I/home/dom/git/libeconf/include % -o %< <CR>
