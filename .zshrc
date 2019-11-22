@@ -127,6 +127,11 @@ mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
+# open youtube links directly in mpv via youtube-dl
+function yt() {
+    mpv --hwdec=vaapi --hwdec-codecs=all  ytdl://"$@"
+}
+
 # zsh stuff
 source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/git/zsh-autosuggestions/zsh-autosuggestions.zsh
