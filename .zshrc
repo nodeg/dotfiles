@@ -96,5 +96,5 @@ mcd() {
 }
 
 # zsh stuff
-source /home/dom/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/dom/git/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/git/zsh-autosuggestions/zsh-autosuggestions.zsh
