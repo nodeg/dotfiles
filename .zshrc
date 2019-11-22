@@ -17,6 +17,9 @@ setopt COMPLETE_IN_WORD
 # long date format in ls(1)
 export TIME_STYLE=long-iso
 
+# load zgen
+source "${HOME}/git/zgen/zgen.zsh"
+
 ### aliases ###
 alias ..='cd ..'
 alias cp='cp -i'
@@ -68,17 +71,14 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export LESS=-r
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-# for pure prompt to work
-export FPATH=$HOME/git/pure:$FPATH
+
+# zgen stuff
+zgen load denysdovhan/spaceship-prompt spaceship
 
 # completion and prompt
 autoload -U colors && colors
-autoload -U compinit
-compinit
 
-# pure prompt
-autoload -U promptinit && promptinit
-prompt pure
+
 # Share history between zsh sessions (multiple Terminals / Tmux panes etc.)
 setopt inc_append_history
 setopt share_history
