@@ -1,0 +1,26 @@
+[user]
+	email = dgedon@suse.de
+	name = Dominik Gedon
+	signingkey = 04ECBFEDF6E72314
+[core]
+	editor = vim
+	askpass = /usr/lib/ssh/ksshaskpass
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

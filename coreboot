@@ -75,8 +75,8 @@ payload
     - [*] Use LZMA compression for payloads
 debugging
     - (nothing checked)
-    
-    
+
+
 make crossgcc-i386 CPUS=4
 make iasl
 make

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 export AURBUILD_ASDEPS=""
 function aur-build(){
 
@@ -13,7 +11,7 @@ function aur-build(){
     mkdir -p "$HOME/tmp.aur/" &&
     cd "$HOME/tmp.aur/" &&
     wget http://aur.archlinux.org/packages/$1/$1.tar.gz -O $1.tar.gz &&
-    tar -xvf $1.tar.gz && cd $1 && 
+    tar -xvf $1.tar.gz && cd $1 &&
     (
         [ -f PKGBUILD ] && vim PKGBUILD
         source PKGBUILD
@@ -34,7 +32,7 @@ function aur-build(){
         done
         echo "Davon installierbar: $missingrepo"
         echo "Davon aus dem aur: $missingaur"
-        ! [ -z "$missingrepo" ] && 
+        ! [ -z "$missingrepo" ] &&
         echo -n "Pakete aus Repo für $1 installieren: " &&
         su -c "pacman --asdeps -S $(echo $missing)"
         ! [ -z "$missingaur" ] &&
@@ -57,7 +55,3 @@ function aur-build(){
     echo  "pacman -U --noconfirm $AURBUILD_ASDEPS $(ls -t *.pkg.tar.xz|head -1)" &&
     su -c "pacman -U --noconfirm $AURBUILD_ASDEPS ""$(ls -t *.pkg.tar.xz|head -1)"
 }
-
-
-
-

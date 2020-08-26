@@ -1,0 +1,26 @@
+# Account information
+IMAPAccount home
+Host biela.uberspace.de
+Port 993
+User dominik@gedon.org
+PassCmd "pass email/gedon.org"
+SSLType IMAPS
+
+# Remote storage
+IMAPStore home-remote
+Account home
+
+# Local storage
+MaildirStore home-local
+Subfolders Verbatim
+Path ~/mail/home/
+Inbox ~/mail/home/Inbox
+
+Channel home
+Master :home-remote:
+Slave :home-local:
+Patterns * !Archives !Lists
+
+Create Both
+Expunge Both
+SyncState *

@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -std=c11 -pedantic -Wall -Wextra -O0 -g3 -DFORTIFY_SOURCE=2 \
+		 -Wformat-truncation -Wstringop-truncation \
+		 -Wformat-overflow -Wstringop-overflow \
+		 -Wmissing-prototypes -Wmissing-declarations \
+         -Wstrict-prototypes -Wpointer-arith \
+    	 -Wwrite-strings -Wcast-qual -Wcast-align \
+    	 -Wbad-function-cast -Winline\
+    	 -Wformat-security  -Wformat-nonliteral \
+    	 -Wmissing-format-attribute\
+
+.PHONY: all clean
+
+all: testfile
+
+testfile: testfile.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
+	rm -f testfile .*o

@@ -1,0 +1,24 @@
+# Identity
+set realname = "Dominik Gedon"
+set from = "dominik@gedon.org"
+set hostname = "gedon.org"
+set folder = "~/mail/home"
+set signature = "~/mail/signatures/.signature"
+set sendmail = "/usr/bin/msmtp -a home"
+set spoolfile = "+Inbox"
+set postponed = "+Drafts"
+set record = "+Sent"
+set mbox = "+Archives/`date +%Y`"
+save-hook . "+Archives/%[%Y]"
+set trash = "+Trash"
+set mbox_type=Maildir
+
+# Colors
+source ~/.neomutt/colors.linux
+
+# GPG
+unset crypt_use_gpgme
+source ~/.neomutt/gpg.rc
+set pgp_default_key = "0x263BF422CC90C832"
+set crypt_opportunistic_encrypt
+set postpone_encrypt

@@ -219,7 +219,6 @@ optional_packages=(
     tlp
     xf86-video-ati
     xf86-video-intel
-    nvidia
 )
 
 sudo pacman --needed -S ${packages[@]}

@@ -16,4 +16,3 @@ wget -c "http://aur.archlinux.org/packages/dm/$1/$1.tar.gz" && tar -xvf "$1.tar.
 echo ""
 echo "==> extracted $1. now it can be build."
 echo ""
-
