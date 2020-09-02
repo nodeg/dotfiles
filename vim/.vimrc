@@ -7,6 +7,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" coc and ale copatibility
+let g:ale_disable_lsp = 1
+
 " vim plug
 call plug#begin('~/.vim/plugged')
      Plug 'junegunn/vim-plug'                         " plugin manager
@@ -24,7 +27,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'tpope/vim-vinegar'                         " enhance vim`s netrw`
      Plug 'tpope/vim-commentary'                      " comment functions
      Plug 'jceb/vim-orgmode'                          " text outlining and task management
-     Plug 'vim-syntastic/syntastic'                   " syntax checking plugin.
+     Plug 'dense-analysis/ale'                        " syntax checking plugin.
      Plug 'cohama/lexima.vim'                         " auto close parentheses
      Plug 'godlygeek/tabular'                         " line up text
      Plug 'ntpeters/vim-better-whitespace'            " better whitespace highlighting
@@ -38,28 +41,23 @@ call plug#begin('~/.vim/plugged')
      Plug 'psliwka/vim-smoothie'                      " smooth scrolling
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
      Plug 'hashivim/vim-terraform'                    " Terraform related plugin
+     Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " Kitty background fix
 let &t_ut=''
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = 'E'
-let g:syntastic_warning_symbol = 'W'
-let g:syntastic_markdown_checkers = ['mdl']
-let g:syntastic_python_checkers = ['flake8']
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+" ALE
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['pylint'],
+\   'markdown': ['mdlint'],
+\}
 
 " enable highlighting and stripping whitespace on save by default
 let g:better_whitespace_enabled=1
@@ -185,7 +183,7 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black    ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black ctermbg=4
 
 " configure tabwidth and insert spaces instead of tabs
@@ -198,6 +196,7 @@ syntax enable
 set termguicolors   " enable 24bit true color
 colorscheme rigel
 set background=dark
+highlight Comment cterm=italic gui=italic
 
 " highlight matching braces
 set showmatch
