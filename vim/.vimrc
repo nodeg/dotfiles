@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
      Plug 'psliwka/vim-smoothie'                      " smooth scrolling
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
+     Plug 'hashivim/vim-terraform'                    " Terraform related plugin
 call plug#end()
 
 " Kitty background fix
@@ -69,6 +70,11 @@ let g:rainbow_active = 1
 
 " loading the devicons plugin
 let g:webdevicons_enable = 1
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
 
 " Goyo/limelight
 autocmd! User GoyoEnter Limelight
