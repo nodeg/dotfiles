@@ -107,10 +107,13 @@ source ~/.zplug/init.zsh
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "arzzen/calc.plugin.zsh"
 
 # zsh plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.local/share/zsh/bd/bd.zsh
+source ~/.local/share/zsh/auto-ls/auto-ls.zsh
 
 # see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
