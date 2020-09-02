@@ -1,22 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# load zgen
-source "${HOME}/.local/share/zsh/zgen/zgen.zsh"
-
-# zgen plugins
-zgen load romkatv/powerlevel10k powerlevel10k
-
-# completion and prompt
-autoload -U colors && colors
-autoload -Uz compinit
-compinit
-kitty + complete setup zsh | source /dev/stdin
-
 # aliases
 if [[ $(uname) == 'Linux' ]]; then
     alias ll='ls -lh --color=auto'
@@ -111,6 +92,22 @@ mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
+# completion and prompt
+autoload -U colors && colors
+autoload -Uz compinit
+compinit
+autoload -U promptinit; promptinit
+prompt pure
+kitty + complete setup zsh | source /dev/stdin
+
+# load zplug
+source ~/.zplug/init.zsh
+
+# zplug plugins
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
 # zsh plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -125,9 +122,3 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[reserved-word]='bold,underline'
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=bold
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=bold
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# broot
-source /home/dom/.config/broot/launcher/bash/br

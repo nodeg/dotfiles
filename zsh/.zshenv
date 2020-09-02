@@ -1,7 +1,8 @@
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
 path=(/snap/bin ~/.cargo/bin ~/bin ~/git/diff-so-fancy ~/.local/bin $path)
-fpath=(~/git/lab $fpath)
+fpath=(~/git/lab ~/.local/share/zsh/pure $fpath)
+
 
 # Ruby
 if which ruby >/dev/null && which gem >/dev/null; then
