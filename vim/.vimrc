@@ -67,6 +67,9 @@ let g:strip_whitespace_on_save=1
 "set to 0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1
 
+" loading the devicons plugin
+let g:webdevicons_enable = 1
+
 " Goyo/limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
