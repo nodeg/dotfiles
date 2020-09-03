@@ -20,11 +20,10 @@ REPORTTIME=5
 
 # Do not save duplicate entries
 setopt HIST_IGNORE_DUPS
-setopt INC_APPEND_HISTORY
 setopt COMPLETE_IN_WORD
 # Share history between zsh sessions (multiple terminals/tmux)
-setopt inc_append_history
-setopt share_history
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
