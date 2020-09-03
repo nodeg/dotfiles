@@ -20,6 +20,10 @@ call plug#begin('~/.vim/plugged')
      Plug 'luochen1990/rainbow'                       " colored brackets
      Plug 'ap/vim-css-color'                          " displays a preview of colors with CSS
      Plug 'itchyny/lightline.vim'                     " status bar
+     Plug 'maximbaz/lightline-bufferline'             " bufferline functionality for lightline
+     Plug 'maximbaz/lightline-trailing-whitespace'    " whitespaces shown in the status bar
+     Plug 'maximbaz/lightline-ale'                    " status bar addon for ale
+     Plug 'edkolev/tmuxline.vim'                      " tmux statusline like lightline
      Plug 'airblade/vim-gitgutter'                    " visualize git changes
      Plug 'rhysd/git-messenger.vim'                   " git commit messages
      Plug 'tpope/vim-fugitive'                        " git stuff
@@ -41,23 +45,39 @@ call plug#begin('~/.vim/plugged')
      Plug 'psliwka/vim-smoothie'                      " smooth scrolling
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
      Plug 'hashivim/vim-terraform'                    " Terraform related plugin
-     Plug 'davidhalter/jedi-vim'
+     Plug 'davidhalter/jedi-vim'                      " python stuff
+     Plug 'tmux-plugins/vim-tmux'                     " tmux config file support
 call plug#end()
 
 " Kitty background fix
 let &t_ut=''
 
+" tmuxline
+let g:tmuxline_powerline_separators = 0
+
 " ALE
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'python': ['pylint'],
-\   'markdown': ['mdlint'],
-\}
+let g:ale_sign_error = "\uf05e"
+let g:ale_sign_warning = "\uf071"
+let g:ale_echo_msg_error_str = "\uf05e"
+let g:ale_echo_msg_warning_str = "\uf071"
+let g:ale_echo_msg_format = '[%linter%] %s'
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \   'python': ['pylint'],
+" \}
+
+" ALE lightline config
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+
+" Lightline
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unicode_symbols = 1
+let g:lightline#bufferline#unnamed = '[No Name]'
+let g:lightline#trailing_whitespace#indicator = '•'
 
 " enable highlighting and stripping whitespace on save by default
 let g:better_whitespace_enabled=1
@@ -78,23 +98,114 @@ let g:terraform_fmt_on_save=1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" lightline status bar
-Plug 'itchyny/lightline.vim'
-    let g:lightline = {
-        \ 'colorscheme': 'rigel',
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'readonly', 'fugitive', 'cocstatus', 'filename', 'modified' ] ]
-        \ },
-        \ 'component_function': {
-        \   'fugitive': 'FugitiveHead',
-        \   'cocstatus': 'coc#status'
-        \ },
-        \ }
+" old lightline status bar
+" let g:lightline = {
+"       \ 'colorscheme': 'rigel',
+"       \ 'component_function': {
+"       \   'fugitive': 'FugitiveHead',
+"       \   'cocstatus': 'coc#status',
+"       \ },
+"       \ }
+" let g:lightline.component_expand = {
+"       \  'linter_checking': 'lightline#ale#checking',
+"       \  'linter_infos': 'lightline#ale#infos',
+"       \  'linter_warnings': 'lightline#ale#warnings',
+"       \  'linter_errors': 'lightline#ale#errors',
+"       \  'linter_ok': 'lightline#ale#ok',
+"       \ }
+" let g:lightline.component_type = {
+"       \     'linter_checking': 'right',
+"       \     'linter_infos': 'right',
+"       \     'linter_warnings': 'warning',
+"       \     'linter_errors': 'error',
+"       \     'linter_ok': 'right',
+"       \ }
+" let g:lightline.active = {
+"       \   'left': [ [ 'mode', 'paste', 'readonly', 'fugitive', 'cocstatus', 'filename', 'modified' ] ],
+"       \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ] ]
+"       \ }
+"""" Lightline
+let g:lightline = {
+      \   'colorscheme': 'rigel',
+      \   'active': {
+      \     'left': [ [ 'mode' ], [ 'pwd' ], [ 'fugitive' ], [ 'cocstatus' ] ],
+      \     'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'trailing', 'lineinfo' ], [ 'fileinfo' ] ],
+      \   },
+      \   'inactive': {
+      \     'left': [ [ 'pwd' ] ],
+      \     'right': [ [ 'lineinfo' ], [ 'fileinfo' ] ],
+      \   },
+      \   'tabline': {
+      \     'left': [ [ 'buffers' ] ],
+      \     'right': [ [ 'close' ] ],
+      \   },
+      \   'separator': { 'left': '', 'right': '' },
+      \   'subseparator': { 'left': '', 'right': '' },
+      \   'mode_map': {
+      \     'n' : 'N',
+      \     'i' : 'I',
+      \     'R' : 'R',
+      \     'v' : 'V',
+      \     'V' : 'V-LINE',
+      \     "\<C-v>": 'V-BLOCK',
+      \     'c' : 'C',
+      \     's' : 'S',
+      \     'S' : 'S-LINE',
+      \     "\<C-s>": 'S-BLOCK',
+      \     't': '󰀣 ',
+      \   },
+      \   'component': {
+      \     'lineinfo': '%l:%-v',
+      \   },
+      \   'component_expand': {
+      \     'buffers': 'lightline#bufferline#buffers',
+      \     'trailing': 'lightline#trailing_whitespace#component',
+      \     'linter_checking': 'lightline#ale#checking',
+      \     'linter_warnings': 'lightline#ale#warnings',
+      \     'linter_errors': 'lightline#ale#errors',
+      \   },
+      \   'component_function': {
+      \     'pwd': 'LightlineWorkingDirectory',
+      \     'fileinfo': 'LightlineFileinfo',
+      \   },
+      \   'component_type': {
+      \     'buffers': 'tabsel',
+      \     'trailing': 'error',
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \   },
+      \ }
+
+" lightline components
+function! LightlineFileinfo()
+  if winwidth(0) < 90
+    return ''
+  endif
+
+  let encoding = &fenc !=# "" ? &fenc : &enc
+  let format = &ff
+  let type = &ft !=# "" ? &ft : "no ft"
+  return type . ' | ' . format . ' | ' . encoding
+endfunction
+
+function! LightlineWorkingDirectory()
+  return &ft =~ 'help\|qf' ? '' : fnamemodify(getcwd(), ":~:.")
+endfunction
+
+let g:tmuxline_preset = {
+      \'a'    : '#{prefix_highlight} #S',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : '#(date)',
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H'}
+
 
 set laststatus=2
 
-" Use auocmd to force lightline update.
+" Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " key mappings
@@ -233,7 +344,7 @@ else
 endif
 
 " spell languages
-set spelllang=en
+set spelllang=en,de
 
 " Let Vim jump to the last position when  reopening a file
 if has("autocmd")
