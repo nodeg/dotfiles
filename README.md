@@ -4,7 +4,8 @@ Some of my personal (config-) files.
 
 ## TODO
 
-Write a bash script to install required packages automatically.
+* Write a bash script to install the required packages automatically.
+* Neovim plugin list
 
 ## Installation using GNU Stow
 
@@ -16,6 +17,24 @@ stow $APPLICATION (e.g. `stow zsh`)
 ```
 
 ## Used plugins and tools
+
+### Sway
+
+* [brightnessctl](https://github.com/Hummer12007/brightnessctl)
+* [gammastep](https://gitlab.com/chinstrap/gammastep)
+* [grim](https://github.com/emersion/grim)
+* [waybar](https://github.com/Alexays/Waybar)
+* [wofi](https://hg.sr.ht/~scoopta/wofi)
+
+### ZSH
+
+* [zgen](https://github.com/tarjoilija/zgen)
+* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+* mafredri/zsh-async
+* sindresorhus/pure
+* arzzen/calc.plugin.zsh
+* MichaelAquilina/zsh-autoswitch-virtualenv
 
 ### Vim/neovim
 
@@ -48,13 +67,7 @@ stow $APPLICATION (e.g. `stow zsh`)
 * [psliwka/vim-smoothie](https://github.com/psliwka/vim-smoothie)
 * [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate)
 
-### ZSH
-
-* [zgen](https://github.com/tarjoilija/zgen)
-* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-* [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-
-### Other
+### Misc
 
 * [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+* playerctl
