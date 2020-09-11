@@ -1,13 +1,12 @@
-[user]
-	email = dgedon@suse.de
-	name = Dominik Gedon
-	signingkey = 04ECBFEDF6E72314
+[includeIf "gitdir:~/git/private/"]
+	path = .gitconfig-private
+[includeIf "gitdir:~/git/work/"]
+	path = .gitconfig-work
 [core]
-	editor = vim
-	askpass = /usr/lib/ssh/ksshaskpass
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = nvim
 [commit]
 	gpgsign = true
+	verbose = true
 [pull]
 	rebase = false
 [color]
@@ -24,3 +23,7 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[pager]
+    # insanely beautiful diffs ==> npm install -g diff-so-fancy
+    diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
+    show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
