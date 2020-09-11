@@ -1,0 +1,61 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Iosevka SS08, Roboto, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #222222;
+    color: #ffffff;
+    border-bottom: 3px solid #222222;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #888888;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #222222;
+    border: none;
+    border-bottom: 3px solid #285577;
+    color: #ffffff;
+    padding: 0 5px;
+}
+
+#workspaces button.focused {
+    color: #ffffff;
+    border-bottom: 3px solid #285577;
+}
+
+#workspaces button.urgent {
+    border-bottom: 3px solid #eb4d4b;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 5px;
+    margin: 0 4px;
+    color: #ffffff;
+}
+
+#battery.critical:not(.charging) {
+    border-top: 3px solid #900000;
+}

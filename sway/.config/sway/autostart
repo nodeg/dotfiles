@@ -1,0 +1,8 @@
+# Daemons
+exec /usr/lib/polkit-gnome-authentication-agent-1
+exec "GDK_BACKEND=x11 nm-applet --indicator"
+exec blueman-applet
+
+# Applications
+exec firefox
+exec keepassxc
