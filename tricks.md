@@ -1,13 +1,13 @@
 I have marked with a * those which I think are absolutely essential
-Items for each section are sorted by oldest to newest. Come back soon for more!
+Items for each section are sorted by oldest to newest.
 
-BASH
+## BASH
 * In bash, 'ctrl-r' searches your command history as you type
-- Input from the commandline as if it were a file by replacing 
+- Input from the commandline as if it were a file by replacing
   'command < file.in' with 'command <<< "some input text"'
-- '^' is a sed-like operator to replace chars from last command 
+- '^' is a sed-like operator to replace chars from last command
   'ls docs; ^docs^web^' is equal to 'ls web'. The second argument can be empty.
-* '!!' expands to the last typed command. Useful for root commands: 
+* '!!' expands to the last typed command. Useful for root commands:
   'cat /etc/...' [permission denied] 'sudo !!'
 * '!!:n' selects the nth argument of the last command, and '!$' the last arg
   'ls file1 file2 file3; cat !!:1-2' shows all files and cats only 1 and 2
@@ -17,22 +17,28 @@ BASH
 - 'nohup ./long_script &' to leave stuff in background even if you logout
 - 'cd -' change to the previous directory you were working on
 - 'ctrl-x ctrl-e' opens an editor to work with long or complex command lines
-* Use traps for cleaning up bash scripts on exit 
+* Use traps for cleaning up bash scripts on exit
   http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html
 * 'shopt -s cdspell' automatically fixes your 'cd folder' spelling mistakes
-* Add 'set editing-mode vi' in your ~/.inputrc to use the vi keybindings 
+* Add 'set editing-mode vi' in your ~/.inputrc to use the vi keybindings
   for bash and all readline-enabled applications (python, mysql, etc)
 - Aggregate history of all terminals in the same .history. On your .bashrc:
+
+    ```bash
       shopt -s histappend
       export HISTSIZE=100000
       export HISTFILESIZE=100000
       export HISTCONTROL=ignoredups:erasedups
       export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+      ```
+
 - Pressed 'Ctrl-s' by accident and the terminal is frozen? Unfreeze: 'Ctrl-Q'
 
 
 
-PSEUDO ALIASES FOR COMMONLY USED LONG COMMANDS
+### PSEUDO ALIASES FOR COMMONLY USED LONG COMMANDS
+
+```bash
 - function lt() { ls -ltrsa "$@" | tail; }
 - function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 - function fname() { find . -iname "*$@*"; }
@@ -41,15 +47,15 @@ PSEUDO ALIASES FOR COMMONLY USED LONG COMMANDS
 - alias pp="ps axuf | pager"
 - alias sum="xargs | tr ' ' '+' | bc" ## Usage: echo 1 2 3 | sum
 - function mcd() { mkdir $1 && cd $1; }
+```
 
-
-VIM
+## VIM
 - ':set spell' activates vim spellchecker. Use ']s' and '[s' to move between
   mistakes, 'zg' adds to the dictionary, 'z=' suggests correctly spelled words
 - check my .vimrc https://github.com/cfenollosa/dotfiles/blob/master/.vimrc
 
 
-TOOLS
+## TOOLS
 * 'htop' instead of 'top'
 - 'ranger' is a nice console file manager for vi fans
 - Use 'apt-file' to see which package provides that file you're missing
@@ -58,7 +64,7 @@ TOOLS
 - Compile your own version of 'screen' from the git sources. Most versions
   have a slow scrolling on a vertical split or even no vertical split at all.
   Alternatively, use 'tmux', though it is not as ubiquitous as 'screen'.
-* 'trash-cli' sends files to the trash instead of deleting them forever. 
+* 'trash-cli' sends files to the trash instead of deleting them forever.
   Be very careful with 'rm' or maybe make a wrapper to avoid deleting '*' by
   accident (e.g. you want to type 'rm tmp*' but type 'rm tmp *')
 - 'file' gives information about a file, as image dimensions or text encoding
@@ -67,9 +73,9 @@ TOOLS
 - Pipe any command over 'column -t' to nicely align the columns
 * Google 'magic sysrq' to bring a Linux machine back from the dead
 - 'diff --side-by-side fileA.txt fileB.txt | pager' to see a nice diff
-* 'j.py' https://github.com/rupa/j2 remembers your most used folders and is an 
-  incredible substitute to browse directories by name instead of 'cd' 
-- 'dropbox_uploader.sh' lets you upload by commandline via Dropbox's API 
+* 'j.py' https://github.com/rupa/j2 remembers your most used folders and is an
+  incredible substitute to browse directories by name instead of 'cd'
+- 'dropbox_uploader.sh' lets you upload by commandline via Dropbox's API
   without the official client https://github.com/andreafabrizi/Dropbox-Uploader
 - learn to use 'pushd' to save time navigating folders (j.py is better though)
 - if you liked the 'psgrep' alias, check 'pgrep' as it is far more powerful
@@ -90,17 +96,17 @@ TOOLS
   on text files: 'seq 10 | datamash sum 1 mean 1'
 
 
-NETWORKING
+## NETWORKING
 - Don't know where to start? SMB is usually better than NFS for newbies.
   If really you know what you are doing, then NFS is the way to go.
-* If you use 'sshfs_mount' and suffer from disconnects, use 
+* If you use 'sshfs_mount' and suffer from disconnects, use
   '-o reconnect,workaround=truncate:rename'
 - 'python -m SimpleHTTPServer 8080' or 'python3 -mhttp.server localhost 8080'
-  shares all the files in the current folder over HTTP. 
-* 'ssh -R 12345:localhost:22 -N server.com' forwards server.com's port 12345 
+  shares all the files in the current folder over HTTP.
+* 'ssh -R 12345:localhost:22 -N server.com' forwards server.com's port 12345
   to your local ssh port, even if you machine is behind a firewall/NAT.
-  'ssh localhost -p 12345' from server.com will get you in your machine. 
-* Read on 'ssh-agent' to strenghten your ssh connections using private keys, 
+  'ssh localhost -p 12345' from server.com will get you in your machine.
+* Read on 'ssh-agent' to strenghten your ssh connections using private keys,
   while avoiding typing passwords every time you ssh.
 - 'socat TCP4-LISTEN:1234,fork TCP4:192.168.1.1:22' forwards your port
   1234 to another machine's port 22. Very useful for quick NAT redirection.
@@ -108,7 +114,7 @@ NETWORKING
   'lsof -i' monitors network connections in real time
   'iftop' shows bandwith usage per *connection*
   'nethogs' shows the bandwith usage per *process*
-* Use this trick on .ssh/config to directly access 'host2' which is on a private 
+* Use this trick on .ssh/config to directly access 'host2' which is on a private
   network, and must be accessed by ssh-ing into 'host1' first
   Host host2
       ProxyCommand ssh -T host1 'nc %h %p'
@@ -118,6 +124,8 @@ NETWORKING
 * ssmtp can use a Gmail account as SMTP and send emails from the command line.
   'echo "Hello, User!" | mail user@domain.com' ## Thanks to Adam Ziaja.
   Configure your /etc/ssmtp/ssmtp.conf:
+
+```shell
       root=***E-MAIL***
       mailhub=smtp.gmail.com:587
       rewriteDomain=
@@ -128,8 +136,7 @@ NETWORKING
       AuthPass=***PASSWORD***
       AuthMethod=LOGIN
       FromLineOverride=YES
-
-                                     -~-
+```
 
 (CC) by-nc, Carlos Fenollosa <carlos.fenollosa@gmail.com>
 Retrieved from http://cfenollosa.com/misc/tricks.txt
