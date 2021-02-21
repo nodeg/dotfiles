@@ -28,6 +28,10 @@ cask 'mpv'
 cask "microsoft-teams"
 cask 'kitty'
 
+brew 'neovim'
+brew 'stow'
+brew 'git'
+brew 'tig'
 brew 'tmux'
 brew 'mas'
 brew 'openssl'
@@ -35,6 +39,8 @@ brew 'gnupg'
 brew 'htop'
 brew 'coreutils'
 brew 'exa'
+brew 'wget'
+brew 'neofetch'
 brew 'watch'
 brew 'tldr'
 brew 'bat'
@@ -43,6 +49,9 @@ brew 'ruby'
 brew 'python'
 brew 'ruby'
 brew 'yarn'
+brew 'youtube-dl'
 
 mas "Keynote", id: 409183694
+mas 'Pages', id: 409201541
+mas 'Numbers', id: 409203825
 mas "Amphetamine", id: 937984704
