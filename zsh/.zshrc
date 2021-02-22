@@ -3,8 +3,8 @@ if [[ $(uname) == 'Linux' ]]; then
     alias ll='ls -lh --color=auto'
     alias la='ls -lah --color=auto'
 elif [[ $(uname) == 'Darwin' ]]; then
-    alias ll='ls -lGh'
-    alias la='ls -alGh'
+    alias ll='exa -lh --color=auto'
+    alias la='exa -lah --color=auto'
 fi
 alias k='k -h'
 alias ka='k -ha'
@@ -14,11 +14,11 @@ alias mv='mv -i'
 alias ln='ln -i'
 if [[ $(uname) == 'Linux' ]]; then
     alias rm='rm -I --preserve-root'
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
+    alias grep='grep --color=auto'
 fi
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
-alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
 alias df='df -h'
 alias du='du -h -d 2'
@@ -104,16 +104,12 @@ kitty + complete setup zsh | source /dev/stdin
 source ~/.zplug/init.zsh
 
 # zplug plugins
-zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "arzzen/calc.plugin.zsh"
 
 # zsh plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.local/share/zsh/bd/bd.zsh
-source ~/.local/share/zsh/auto-ls/auto-ls.zsh
+source ~/.local/share/zsh/zsh-bd/bd.zsh
 
 # see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)

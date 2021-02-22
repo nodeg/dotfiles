@@ -1,6 +1,6 @@
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
-path=(/snap/bin ~/.cargo/bin ~/bin ~/git/diff-so-fancy ~/.local/bin $path)
+path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $path)
 fpath=(~/git/lab ~/.local/share/zsh/pure $fpath)
 
 
@@ -24,6 +24,7 @@ setopt COMPLETE_IN_WORD
 # Share history between zsh sessions (multiple terminals/tmux)
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+export GPG_TTY=$(tty)
 
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
@@ -41,12 +42,12 @@ export TIME_STYLE=long-iso
 
 # wayland compatibility
 #enable wayland support in Firefox # NOTE: DISABLE IF BROKEN on Firefox >=73
-export GDK_BACKEND='wayland'
+#export GDK_BACKEND='wayland'
 # use wayland as default for GDK stuff like LibreOffice. # NOTE: put "GDK_BACKEND=x11" before command if it doesn't run (display error)
-export MOZ_ENABLE_WAYLAND=1
+#export MOZ_ENABLE_WAYLAND=1
 # fix java stuff in swaywm (especially IntelliJ)
-export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORM=wayland-egl
-export CLUTTER_BACKEND=wayland
-export QT_QPA_PLATFORMTHEME="wayland"
-export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+#export _JAVA_AWT_WM_NONREPARENTING=1
+#export QT_QPA_PLATFORM=wayland-egl
+#export CLUTTER_BACKEND=wayland
+#export QT_QPA_PLATFORMTHEME="wayland"
+#export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
