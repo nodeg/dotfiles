@@ -20,32 +20,21 @@ call plug#begin('~/.vim/plugged')
      Plug 'luochen1990/rainbow'                       " colored brackets
      Plug 'ap/vim-css-color'                          " displays a preview of colors with CSS
      Plug 'itchyny/lightline.vim'                     " status bar
-     Plug 'maximbaz/lightline-bufferline'             " bufferline functionality for lightline
-     Plug 'maximbaz/lightline-trailing-whitespace'    " whitespaces shown in the status bar
-     Plug 'maximbaz/lightline-ale'                    " status bar addon for ale
      Plug 'edkolev/tmuxline.vim'                      " tmux statusline like lightline
      Plug 'airblade/vim-gitgutter'                    " visualize git changes
-     Plug 'rhysd/git-messenger.vim'                   " git commit messages
      Plug 'tpope/vim-fugitive'                        " git stuff
      Plug 'tpope/vim-surround'                        " delete, change and add surroundings
      Plug 'tpope/vim-vinegar'                         " enhance vim`s netrw`
      Plug 'tpope/vim-commentary'                      " comment functions
      Plug 'jceb/vim-orgmode'                          " text outlining and task management
-     Plug 'dense-analysis/ale'                        " syntax checking plugin.
      Plug 'cohama/lexima.vim'                         " auto close parentheses
      Plug 'godlygeek/tabular'                         " line up text
      Plug 'ntpeters/vim-better-whitespace'            " better whitespace highlighting
-     Plug 'yuezk/vim-js'                              " better js support
      Plug 'nathanaelkane/vim-indent-guides'           " visually displaying indent levels
-     Plug 'neoclide/coc.nvim', {'branch': 'release'}  " smart like VCode
-     Plug 'vim-utils/vim-man'                         " man pages in vim
      Plug 'sheerun/vim-polyglot'                      " language packs
-     Plug 'ryanoasis/vim-devicons'                    " some nice icons
      Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-     Plug 'psliwka/vim-smoothie'                      " smooth scrolling
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
      Plug 'hashivim/vim-terraform'                    " Terraform related plugin
-     Plug 'davidhalter/jedi-vim'                      " python stuff
      Plug 'tmux-plugins/vim-tmux'                     " tmux config file support
 call plug#end()
 
@@ -54,23 +43,6 @@ let &t_ut=''
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
-
-" ALE
-let g:ale_sign_error = "\uf05e"
-let g:ale_sign_warning = "\uf071"
-let g:ale_echo_msg_error_str = "\uf05e"
-let g:ale_echo_msg_warning_str = "\uf071"
-let g:ale_echo_msg_format = '[%linter%] %s'
-" let g:ale_linters = {
-" \   'javascript': ['eslint'],
-" \   'python': ['pylint'],
-" \}
-
-" ALE lightline config
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_infos = "\uf129"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
 
 " Lightline
 let g:lightline#bufferline#show_number  = 1
@@ -86,50 +58,16 @@ let g:strip_whitespace_on_save=1
 "set to 0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1
 
-" loading the devicons plugin
-let g:webdevicons_enable = 1
-
-" Terraform
-let g:terraform_align=1
-let g:terraform_fold_sections=1
-let g:terraform_fmt_on_save=1
-
 " Goyo/limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" old lightline status bar
-" let g:lightline = {
-"       \ 'colorscheme': 'rigel',
-"       \ 'component_function': {
-"       \   'fugitive': 'FugitiveHead',
-"       \   'cocstatus': 'coc#status',
-"       \ },
-"       \ }
-" let g:lightline.component_expand = {
-"       \  'linter_checking': 'lightline#ale#checking',
-"       \  'linter_infos': 'lightline#ale#infos',
-"       \  'linter_warnings': 'lightline#ale#warnings',
-"       \  'linter_errors': 'lightline#ale#errors',
-"       \  'linter_ok': 'lightline#ale#ok',
-"       \ }
-" let g:lightline.component_type = {
-"       \     'linter_checking': 'right',
-"       \     'linter_infos': 'right',
-"       \     'linter_warnings': 'warning',
-"       \     'linter_errors': 'error',
-"       \     'linter_ok': 'right',
-"       \ }
-" let g:lightline.active = {
-"       \   'left': [ [ 'mode', 'paste', 'readonly', 'fugitive', 'cocstatus', 'filename', 'modified' ] ],
-"       \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ] ]
-"       \ }
 """" Lightline
 let g:lightline = {
       \   'colorscheme': 'rigel',
       \   'active': {
-      \     'left': [ [ 'mode' ], [ 'pwd' ], [ 'fugitive' ], [ 'cocstatus' ] ],
-      \     'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'trailing', 'lineinfo' ], [ 'fileinfo' ] ],
+      \     'left': [ [ 'mode' ], [ 'pwd' ], [ 'fugitive' ] ],
+      \     'right': [ [ 'lineinfo' ], [ 'fileinfo' ] ],
       \   },
       \   'inactive': {
       \     'left': [ [ 'pwd' ] ],
@@ -141,39 +79,12 @@ let g:lightline = {
       \   },
       \   'separator': { 'left': '', 'right': '' },
       \   'subseparator': { 'left': '', 'right': '' },
-      \   'mode_map': {
-      \     'n' : 'N',
-      \     'i' : 'I',
-      \     'R' : 'R',
-      \     'v' : 'V',
-      \     'V' : 'V-LINE',
-      \     "\<C-v>": 'V-BLOCK',
-      \     'c' : 'C',
-      \     's' : 'S',
-      \     'S' : 'S-LINE',
-      \     "\<C-s>": 'S-BLOCK',
-      \     't': '󰀣 ',
-      \   },
       \   'component': {
       \     'lineinfo': '%l:%-v',
-      \   },
-      \   'component_expand': {
-      \     'buffers': 'lightline#bufferline#buffers',
-      \     'trailing': 'lightline#trailing_whitespace#component',
-      \     'linter_checking': 'lightline#ale#checking',
-      \     'linter_warnings': 'lightline#ale#warnings',
-      \     'linter_errors': 'lightline#ale#errors',
       \   },
       \   'component_function': {
       \     'pwd': 'LightlineWorkingDirectory',
       \     'fileinfo': 'LightlineFileinfo',
-      \   },
-      \   'component_type': {
-      \     'buffers': 'tabsel',
-      \     'trailing': 'error',
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
       \   },
       \ }
 
@@ -226,47 +137,6 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+p
 vnoremap <C-p> "+p
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " configuration
 
