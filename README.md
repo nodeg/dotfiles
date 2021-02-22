@@ -2,11 +2,6 @@
 
 Some of my personal (config-) files.
 
-## TODO
-
-* Write a bash script to install the required packages automatically.
-* Neovim plugin list
-
 ## Installation using GNU Stow
 
 ```shell
@@ -28,13 +23,11 @@ stow $APPLICATION (e.g. `stow zsh`)
 
 ### ZSH
 
-* [zgen](https://github.com/tarjoilija/zgen)
+* [zplug](https://github.com/zplug/zplug)
 * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 * mafredri/zsh-async
 * sindresorhus/pure
-* arzzen/calc.plugin.zsh
-* MichaelAquilina/zsh-autoswitch-virtualenv
 
 ### Vim/neovim
 
@@ -47,7 +40,6 @@ stow $APPLICATION (e.g. `stow zsh`)
 * [ap/vim-css-color](https://github.com/ap/vim-css-color)
 * [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 * [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-* [rhysd/git-messenger.vim](https://github.com/rhysd/git-messenger.vim)
 * [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 * [tpope/vim-surround](https://github.com/tpope/vim-surround)
 * [tpope/vim-vinegar](https://github.com/tpope/vim-vinegar)
@@ -57,17 +49,11 @@ stow $APPLICATION (e.g. `stow zsh`)
 * [cohama/lexima.vim](https://github.com/cohama/lexima.vim)
 * [godlygeek/tabular](https://github.com/godlygeek/tabular)
 * [ntpeters/vim-better-whitespace](https://github.com/ntpeters/vim-better-whitespace)
-* [yuezk/vim-js](https://github.com/yuezk/vim-js)
 * [nathanaelkane/vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides)
-* [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
-* [vim-utils/vim-man](https://github.com/vim-utils/vim-man)
 * [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
-* [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
-* [psliwka/vim-smoothie](https://github.com/psliwka/vim-smoothie)
 * [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate)
 
 ### Misc
 
 * [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
-* playerctl
