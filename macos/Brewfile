@@ -10,6 +10,7 @@ tap 'buo/cask-upgrade'
 tap "homebrew/cask-fonts"
 
 cask 'docker'
+cask 'virtualbox'
 cask 'google-chrome'
 cask 'alfred'
 cask 'bartender'
@@ -19,7 +20,6 @@ cask 'keepassxc'
 cask 'signal'
 cask 'rocket-chat'
 cask 'texmaker'
-cask 'docker'
 cask 'mactex'
 cask 'font-fira-code'
 cask 'visual-studio-code'
@@ -63,6 +63,7 @@ brew 'python'
 brew 'ruby'
 brew 'yarn'
 brew 'youtube-dl'
+brew 'docker-machine'
 
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541

@@ -1,12 +1,3 @@
-#Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-
-#Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
-# Disable weird new apple setting to set keyboard rate
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
 #Store screenshots in subfolder on desktop
 mkdir ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
