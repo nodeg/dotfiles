@@ -1,0 +1,57 @@
+[alias]
+
+# Blog Post: Human Git Aliases; http://gggritso.com/human-git-aliases
+# https://github.com/gggritso/dotfiles/blob/master/gitconfig.symlink
+# BEGIN HUMAN
+#----
+amend        = commit --amend
+back         = checkout "-"
+branches     = branch -a
+branchout    = checkout -b
+branch-name  = rev-parse --abbrev-ref HEAD
+contributors = shortlog -s -n
+down         = pull --rebase
+discard      = checkout --
+dump         = cat-file -p
+filetrail    = log --follow -p -w
+graph        = log --graph -10 --branches --remotes --tags\
+               --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+history     = l --graph
+ignore      = update-index --assume-unchanged
+ignored     = ls-files -o -i --exclude-standard   # Show files ignored by git:
+invert      = revert
+incoming    = log orgin/master ^master            # show only what is in orgin/master that isn't in master
+last        = log -1 HEAD --format=format:"%Cred%H"
+logs        = log --stat
+mergetrail  = log --ancestry-path -merges
+move        = mv
+nevermind   = !git reset --hard HEAD && git clean -d -f
+outgoing    = log master ^orgin/master            # show only what is in master that isn't in orgin/master
+praise      = blame
+precommit   = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+prestage    = diff -w --word-diff=color
+remotes     = remote --verbose
+remove      = rm
+resave      = commit --amend
+rewrite     = rebase -i
+save        = commit -am
+show-all    = log --follow
+shop-all    = log --follow -p
+stashes     = stash list
+summary     = status -u -s
+tags        = tag
+type        = cat-file -t
+uncommit    = reset --mixed HEAD~
+undo        = reset --soft HEAD~1
+unignore    = update-index --no-assume-changed
+unmerged    = branch --no-merged
+unmerged    = diff -w --name-only --diff-filter=U
+unstage     = reset -q HEAD --
+unstash     = stash pop
+untrack     = rm -r --cached
+up          = push up master
+what        = show -w
+#----
+# END HUMAN-
+
+# vim:filetype=gitconfig expandtab shiftwidth=4
