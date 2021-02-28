@@ -2,24 +2,24 @@ Host github.com
     User git
     Preferredauthentications publickey
     ForwardAgent yes
-	UseKeychain yes
-	AddKeysToAgent yes
+    UseKeychain yes
+    AddKeysToAgent yes
     IdentityFile ~/.ssh/dom_ed25519
 
 Host gitlab.com
     User git
     Preferredauthentications publickey
     ForwardAgent yes
-	UseKeychain yes
-	AddKeysToAgent yes
+    UseKeychain yes
+    AddKeysToAgent yes
     IdentityFile ~/.ssh/dom_ed25519
 
 Host *
-	StrictHostKeyChecking ask
-	VerifyHostKeyDNS ask
-	NoHostAuthenticationForLocalhost yes
-	UseKeychain yes
-	AddKeysToAgent yes
-	ControlMaster auto
-	IdentityFile ~/.ssh/dgedon_su_de
-	IdentityFile ~/.ssh/dom_ed25519
+    StrictHostKeyChecking ask
+    VerifyHostKeyDNS ask
+    NoHostAuthenticationForLocalhost yes
+    UseKeychain yes
+    AddKeysToAgent yes
+    ControlMaster auto
+    IdentityFile ~/.ssh/dgedon_su_de
+    IdentityFile ~/.ssh/dom_ed25519
