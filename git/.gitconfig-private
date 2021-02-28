@@ -2,3 +2,5 @@
     email = dominik@gedon.org
     name = Dominik Gedon
     signingkey = 263BF422CC90C832
+
+# vim:filetype=gitconfig expandtab shiftwidth=4
