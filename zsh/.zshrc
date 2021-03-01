@@ -51,6 +51,7 @@ alias oc='osc ci'
 alias od='osc diff'
 alias ob='osc build --no-init'
 alias obc='osc build --clean'
+alias iosc="osc -A https://api.suse.de"
 
 # special
 alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
