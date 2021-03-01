@@ -17,6 +17,7 @@ filetrail    = log --follow -p -w
 graph        = log --graph -10 --branches --remotes --tags\
                --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
 history     = l --graph
+myhist      = log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short
 ignore      = update-index --assume-unchanged
 ignored     = ls-files -o -i --exclude-standard   # Show files ignored by git:
 invert      = revert
