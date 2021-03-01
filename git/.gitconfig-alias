@@ -4,20 +4,19 @@
 # https://github.com/gggritso/dotfiles/blob/master/gitconfig.symlink
 # BEGIN HUMAN
 #----
-amend        = commit --amend
-back         = checkout "-"
-branches     = branch -a
-branchout    = checkout -b
-branch-name  = rev-parse --abbrev-ref HEAD
-contributors = shortlog -s -n
-down         = pull --rebase
-discard      = checkout --
-dump         = cat-file -p
-filetrail    = log --follow -p -w
-graph        = log --graph -10 --branches --remotes --tags\
+amend       = commit --amend
+back        = checkout "-"
+branches    = branch -a
+branchout   = checkout -b
+branch-name = rev-parse --abbrev-ref HEAD
+contributors= shortlog -s -n
+down        = pull --rebase
+discard     = checkout --
+dump        = cat-file -p
+filetrail   = log --follow -p -w
+graph       = log --graph -10 --branches --remotes --tags\
                --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
-history     = l --graph
-myhist      = log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short
+history     = log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short
 ignore      = update-index --assume-unchanged
 ignored     = ls-files -o -i --exclude-standard   # Show files ignored by git:
 invert      = revert

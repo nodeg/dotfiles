@@ -18,6 +18,7 @@
 [commit]
 	gpgsign = true
 	verbose = true
+    template = ~/.gitconfig-template
 
 [pull]
 	rebase = true
