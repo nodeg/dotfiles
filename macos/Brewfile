@@ -8,6 +8,7 @@ tap 'homebrew/services'
 # INFO: brew cu
 tap 'buo/cask-upgrade'
 tap "homebrew/cask-fonts"
+tap 'jesseduffield/lazygit'
 
 cask 'docker'
 cask 'virtualbox'
@@ -30,6 +31,8 @@ cask 'kitty'
 cask 'tex-live-utility'
 cask 'vagrant'
 cask 'vagrant-manager'
+cask 'obsidian'
+cask 'spacelauncher'
 
 brew 'zsh'
 brew 'zsh-completion'
@@ -64,6 +67,10 @@ brew 'ruby'
 brew 'yarn'
 brew 'youtube-dl'
 brew 'docker-machine'
+brew 'starship'
+brew 'lazygit'
+brew 'shellcheck'
+brew 'koekeishiya/formulae/yabai'
 
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
