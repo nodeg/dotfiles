@@ -98,7 +98,7 @@ autoload -U colors && colors
 autoload -Uz compinit
 compinit
 autoload -U promptinit; promptinit
-prompt pure
+#prompt pure
 kitty + complete setup zsh | source /dev/stdin
 
 # load zplug
@@ -122,3 +122,6 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[reserved-word]='bold,underline'
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=bold
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=bold
+
+# startship prompt
+eval "$(starship init zsh)"
