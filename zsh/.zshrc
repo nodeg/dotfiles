@@ -53,6 +53,14 @@ alias ob='osc build --no-init'
 alias obc='osc build --clean'
 alias iosc="osc -A https://api.suse.de"
 
+# docker
+alias dp='docker ps'
+alias dpa='docker ps -a'
+alias dcp='docker container prune'
+alias di='docker image list'
+alias dip='docker image prune'
+alias dirm='docker image rm'
+
 # special
 alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
 alias faush='ssh faui0sr0.cs.fau.de'
