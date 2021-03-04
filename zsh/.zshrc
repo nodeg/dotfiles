@@ -102,6 +102,11 @@ mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
+# GPG agent
+export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+eval $(keychain --quiet --agents ssh,gpg --eval --noask --inherit any)
+export GPG_TTY=`tty`
+
 # completion and prompt
 autoload -U colors && colors
 autoload -Uz compinit
