@@ -71,6 +71,7 @@ brew 'starship'
 brew 'lazygit'
 brew 'shellcheck'
 brew 'koekeishiya/formulae/yabai'
+brew 'keychain'
 
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
