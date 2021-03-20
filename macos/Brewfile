@@ -64,15 +64,23 @@ brew 'bat'
 brew 'tree'
 brew 'ruby'
 brew 'python'
+brew 'pipx'
 brew 'ruby'
 brew 'yarn'
 brew 'youtube-dl'
+brew 'ffmpeg'
+brew 'libav'
 brew 'docker-machine'
 brew 'starship'
 brew 'lazygit'
 brew 'shellcheck'
 brew 'koekeishiya/formulae/yabai'
 brew 'keychain'
+brew 'rg'
+brew 'fd'
+brew 'cloc'
+brew 'kakoune'
+
 
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
