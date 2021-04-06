@@ -27,7 +27,6 @@ stow $APPLICATION (e.g. `stow zsh`)
 * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 * mafredri/zsh-async
-* sindresorhus/pure
 
 ### Vim/neovim
 
