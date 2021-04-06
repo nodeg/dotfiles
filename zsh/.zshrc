@@ -41,6 +41,8 @@ alias gl='git log'
 alias glo='git log --oneline'
 alias gp='git push'
 alias gpl='git pull'
+alias gfu='git fetch upstream'
+alias grb='git rebase'
 
 # osc
 alias os='osc status'
