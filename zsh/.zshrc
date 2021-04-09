@@ -65,6 +65,8 @@ alias dirm='docker image rm'
 
 # zypper
 alias zup='sudo zypper dup'
+alias zi='sudo zypper install'
+alias zs='zypper search'
 alias zps='zypper ps -s'
 
 # special
@@ -108,10 +110,10 @@ mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
-# GPG agent
-export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
-eval $(keychain --quiet --agents ssh,gpg --eval --noask --inherit any)
-export GPG_TTY=`tty`
+rc() {
+    echo "rootconnect to $1"
+    ssh root@"$1"
+}
 
 # completion and prompt
 autoload -U colors && colors
