@@ -63,6 +63,10 @@ alias di='docker image list'
 alias dip='docker image prune'
 alias dirm='docker image rm'
 
+# zypper
+alias zup='sudo zypper dup'
+alias zps='zypper ps -s'
+
 # special
 alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
 alias faush='ssh faui0sr0.cs.fau.de'
