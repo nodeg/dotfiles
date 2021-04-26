@@ -124,7 +124,11 @@ autoload -U promptinit; promptinit
 kitty + complete setup zsh | source /dev/stdin
 
 # load zplug
-source ~/.zplug/init.zsh
+if [[ $(uname) == 'Darwin' ]]; then
+    source /usr/local/opt/zplug/init.zsh
+else
+    source ~/.zplug/init.zsh
+fi
 
 # zplug plugins
 zplug "mafredri/zsh-async", from:github

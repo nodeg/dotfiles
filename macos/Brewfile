@@ -80,6 +80,7 @@ brew 'rg'
 brew 'fd'
 brew 'cloc'
 brew 'kakoune'
+brew 'zplug'
 
 
 mas "Keynote", id: 409183694
