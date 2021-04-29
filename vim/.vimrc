@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'junegunn/gv.vim'                           " git commit browser
      Plug 'junegunn/goyo.vim'                         " distraction-free writing
      Plug 'junegunn/limelight.vim'                    " dims all paragraphs except the one
-     Plug 'Rigellute/rigel'                           " color theme
+     Plug 'dracula/vim'                               " color theme
      Plug 'luochen1990/rainbow'                       " colored brackets
      Plug 'ap/vim-css-color'                          " displays a preview of colors with CSS
      Plug 'itchyny/lightline.vim'                     " status bar
@@ -64,7 +64,7 @@ autocmd! User GoyoLeave Limelight!
 
 """" Lightline
 let g:lightline = {
-      \   'colorscheme': 'rigel',
+      \   'colorscheme': 'dracula',
       \   'active': {
       \     'left': [ [ 'mode' ], [ 'pwd' ], [ 'fugitive' ] ],
       \     'right': [ [ 'lineinfo' ], [ 'fileinfo' ] ],
@@ -175,7 +175,7 @@ set expandtab        " expand tabs to spaces
 " turn syntax highlighting on
 syntax enable
 set termguicolors   " enable 24bit true color
-colorscheme rigel
+colorscheme dracula
 set background=dark
 highlight Comment cterm=italic gui=italic
 

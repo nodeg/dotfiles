@@ -132,6 +132,7 @@ fi
 
 # zplug plugins
 zplug "mafredri/zsh-async", from:github
+zplug "dracula/zsh", as:theme
 
 # zsh plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
