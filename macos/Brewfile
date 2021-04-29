@@ -12,7 +12,7 @@ tap 'jesseduffield/lazygit'
 
 cask 'docker'
 cask 'virtualbox'
-cask 'google-chrome'
+cask 'eloston-chromium'
 cask 'alfred'
 cask 'bartender'
 cask 'freetube'
@@ -24,6 +24,7 @@ cask 'texmaker'
 cask 'mactex'
 cask 'font-fira-code'
 cask 'visual-studio-code'
+cask 'pycharm-ce'
 cask 'tunnelblick'
 cask 'mpv'
 cask "microsoft-teams"
@@ -81,6 +82,7 @@ brew 'fd'
 brew 'cloc'
 brew 'kakoune'
 brew 'zplug'
+brew 'weechat'
 
 
 mas "Keynote", id: 409183694
