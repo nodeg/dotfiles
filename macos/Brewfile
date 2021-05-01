@@ -1,15 +1,13 @@
-cask_args appdir: '/Applications'
+cask_args appdir: '/Applications' # set cask default application folder
 
-# Install and manage GUI macOS applications
-tap 'homebrew/cask'
-# Integrates Homebrew formulae with macOS' `launchctl` manager
-tap 'homebrew/services'
-# A CLI tool upgrading every outdated app installed by Homebrew Cask
-# INFO: brew cu
-tap 'buo/cask-upgrade'
+tap 'homebrew/cask' # Install and manage GUI macOS applications
+tap 'homebrew/services' # Integrates Homebrew formulae with macOS' `launchctl` manager
+tap 'buo/cask-upgrade' # A CLI tool upgrading every outdated app installed by Homebrew Cask
 tap "homebrew/cask-fonts"
 tap 'jesseduffield/lazygit'
+tap 'homebrew/cask-drivers'
 
+# casks
 cask 'docker'
 cask 'virtualbox'
 cask 'eloston-chromium'
@@ -34,7 +32,9 @@ cask 'vagrant'
 cask 'vagrant-manager'
 cask 'obsidian'
 cask 'spacelauncher'
+cask 'yubico-yubikey-manager'
 
+# brews
 brew 'zsh'
 brew 'zsh-completion'
 brew 'pip-completion'
@@ -84,7 +84,7 @@ brew 'kakoune'
 brew 'zplug'
 brew 'weechat'
 
-
+# stuff from the Apple App Store
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
 mas 'Numbers', id: 409203825
