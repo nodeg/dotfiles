@@ -1,7 +1,7 @@
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
 path=(/usr/local/opt/ruby/bin snap/bin ~/.cargo/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $path)
-fpath=(~/git/lab ~/.local/share/zsh/pure $fpath)
+fpath=(~/git/lab $fpath)
 
 
 # Ruby

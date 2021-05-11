@@ -74,6 +74,7 @@ alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --trac
 alias faush='ssh faui0sr0.cs.fau.de'
 #alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo[height<=?1080]+bestaudio/best'
 alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo+bestaudio/best'
+alias cobbler='cd ~/git/work/cobbler'
 
 # A nicer ps-output. We need to specify user:12 because otherwise usernames
 # such as 'sphinxsearch' or 'libvirt-qemu' are displayed as user IDs. According
