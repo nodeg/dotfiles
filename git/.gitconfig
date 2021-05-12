@@ -1,3 +1,6 @@
+[init]
+    defaultBranch = main
+
 [user]
     email = dominik@gedon.org
     name = Dominik Gedon
