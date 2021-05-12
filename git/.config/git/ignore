@@ -27,4 +27,4 @@ __pycache__/
 .vscode
 
 # docker
-supervisor.pid
+supervisord.pid
