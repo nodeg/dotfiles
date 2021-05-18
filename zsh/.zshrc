@@ -29,6 +29,8 @@ alias vi='nvim'
 alias v='nvim'
 alias ip='ip --color=auto'
 alias weather='clear && curl wttr.in'
+alias hbrew='cd /usr/local/Homebrew'
+alias hbrewk=' cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask'
 
 # git
 alias gs='git status'
@@ -116,43 +118,53 @@ rc() {
     ssh root@"$1"
 }
 
+#  Bootsrap Homebrew
+if [[ $(uname) == 'Darwin' ]]; then
+    if (( ! $+commands[brew] )); then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+fi
+
+# Check if the .zinit directory exists
+if [ ! -d $HOME/.zinit ]; then
+    mkdir $HOME/.zinit
+    git clone https://github.com/zdharma/zinit.git $HOME/.zinit/bin
+fi
+
+# zinit plugin manager
+source ~/.zinit/bin/zinit.zsh
+
 # completion and prompt
 autoload -U colors && colors
 autoload -Uz compinit
 compinit
 autoload -U promptinit; promptinit
-#prompt pure
 kitty + complete setup zsh | source /dev/stdin
 
-# load zplug
-if [[ $(uname) == 'Darwin' ]]; then
-    source /usr/local/opt/zplug/init.zsh
-else
-    source ~/.zplug/init.zsh
-fi
+# zinit plugins
+# Allow sourcing this file more than once without producing
+# warnings about the plugins being re-loaded.
+ZINIT[MUTE_WARNINGS]=1
 
-# zplug plugins
-zplug "mafredri/zsh-async", from:github
-zplug "dracula/zsh", as:theme
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
-# zsh plugins
-source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.local/share/zsh/zsh-bd/bd.zsh
+# Pressing <up> and <down> when you've already typed in part of a
+# command will only show you history entries matching that text.
+zplugin light zsh-users/zsh-history-substring-search
 
-# see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[alias]=none
-ZSH_HIGHLIGHT_STYLES[builtin]=none
-ZSH_HIGHLIGHT_STYLES[function]=none
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[reserved-word]='bold,underline'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=bold
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=bold
+# Provides the 'wdx' function to set warp points to directories
+# and quickly jump to them.
+zplugin light raxod502/wdx
 
-# startship prompt
-eval "$(starship init zsh)"
+### Starship prompt
+zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)'
+zinit light starship/starship
 
 # bit, https://github.com/chriswalz/bit
 autoload -U +X bashcompinit && bashcompinit
