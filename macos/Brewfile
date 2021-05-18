@@ -6,6 +6,8 @@ tap 'buo/cask-upgrade' # A CLI tool upgrading every outdated app installed by Ho
 tap "homebrew/cask-fonts"
 tap 'jesseduffield/lazygit'
 tap 'homebrew/cask-drivers'
+tap 'railwaycat/emacsmacport'
+tap 'amar1729/formulae'
 
 # casks
 cask 'docker'
@@ -33,6 +35,21 @@ cask 'vagrant-manager'
 cask 'obsidian'
 cask 'spacelauncher'
 cask 'yubico-yubikey-manager'
+cask 'keka'
+cask 'plex'
+cask 'sublime-text'
+cask 'sublime-merge'
+cask 'thunderbird'
+cask 'xampp'
+cask 'jitsi-meet'
+cask 'macfuse'
+cask 'maxtex'
+cask 'tex-live-utility'
+cask 'stats'
+cask 'onyx'
+cask 'libreoffice'
+cask 'vagrant-vmware-utility'
+cask 'xquartz'
 
 # brews
 brew 'zsh'
@@ -84,9 +101,19 @@ brew 'cloc'
 brew 'kakoune'
 brew 'zplug'
 brew 'weechat'
+brew 'pandoc'
+brew 'ripgrep'
+brew 'emacs-mac --with-modules'
+brew 'browserpass'
+
 
 # stuff from the Apple App Store
 mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
 mas 'Numbers', id: 409203825
 mas "Amphetamine", id: 937984704
+mas "Notability", id: 360593530
+mas "Affinity Photo", id: 824183456
+mas "Affinity Designer", id: 824171161
+mas "Affinity Publisher", id: 881418622
+mas "AdBlock Pro", id: 1018301773
