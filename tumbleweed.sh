@@ -16,8 +16,5 @@ zypper install \
     libreoffice-l10n-de \
     myspell-de_DE \
 
-# zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-
 # git repositories
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
