@@ -15,6 +15,9 @@
 [includeIf "gitdir:~/git/work/"]
 	path = .gitconfig-work
 
+[includeIf "gitdir:/usr/local/Homebrew"]
+    path = .gitconfig-private
+
 [core]
 	editor = nvim
 
