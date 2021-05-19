@@ -105,6 +105,7 @@ brew 'pandoc'
 brew 'ripgrep'
 brew 'emacs-mac --with-modules'
 brew 'browserpass'
+brew 'pass'
 
 
 # stuff from the Apple App Store
