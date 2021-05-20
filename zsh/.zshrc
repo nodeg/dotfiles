@@ -153,6 +153,7 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
+zplugin light hlissner/zsh-autopair
 
 # Pressing <up> and <down> when you've already typed in part of a
 # command will only show you history entries matching that text.
