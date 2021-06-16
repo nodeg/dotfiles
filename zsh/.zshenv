@@ -3,9 +3,9 @@ typeset -U path
 
 # PATH
 if [[ $(uname) == 'Darwin' ]]; then
-    path=(/usr/local/opt/ruby/bin snap/bin ~/.cargo/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin $path)
+    path=(/usr/local/opt/ruby/bin snap/bin ~/.cargo/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
 else
-   path=(~/snap/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin $path)
+   path=(~/snap/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin ~/.emacs.d/bin $path)
 fi
 
 fpath=(~/git/lab $fpath)
