@@ -34,9 +34,9 @@ alias hbrewk=' cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask'
 
 # git
 alias gs='git status'
-alias gc='git commit -v'
+alias gc='git commit -v --signoff'
 alias ga='git add'
-alias gca='git commit -v -a'
+alias gca='git commit -v -a --signoff'
 alias gco='git checkout'
 alias gd='git diff'
 alias gl='git log'
