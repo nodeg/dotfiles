@@ -106,6 +106,14 @@ brew 'ripgrep'
 brew 'emacs-mac --with-modules'
 brew 'browserpass'
 brew 'pass'
+brew 'dust'
+brew 'duf'
+brew 'git-delta'
+brew 'broot'
+brew 'fzf'
+brew 'procs'
+brew 'procs'
+brew 'gping'
 
 
 # stuff from the Apple App Store
