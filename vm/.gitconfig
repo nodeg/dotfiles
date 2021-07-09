@@ -1,0 +1,60 @@
+[init]
+    defaultBranch = main
+
+[user]
+    email = dgedon@suse.de
+    name = Dominik Gedon
+    signingkey = 04ECBFEDF6E72314
+
+[include]
+    path = .gitconfig-alias  # save alias in another file
+
+[core]
+	editor = nvim
+
+[commit]
+	gpgsign = true
+	verbose = true
+    template = ~/.gitconfig-template
+
+[pull]
+	rebase = true
+
+[pager]
+    # insanely beautiful diffs ==> npm install -g diff-so-fancy
+    diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
+    show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
+
+[diff]
+    renames = copies  # Detect copies as well as renames
+    algorithm = histogram
+    mnemonicprefix = true  # see https://stackoverflow.com/a/28017534
+[apply]
+    whitespace = fix  # Detect whitespace errors when applying a patch
+
+[color]
+	ui = true
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
