@@ -22,7 +22,6 @@ fi
 alias mkdir='mkdir -p'
 alias df='df -h'
 alias du='du -h -d 2'
-alias mc='mc -b'
 alias diff='diff --color=auto'
 alias lsg='ll | grep' # show me files matching "ls grep"
 alias vi='nvim'
@@ -66,8 +65,9 @@ alias dip='docker image prune'
 alias dirm='docker image rm'
 
 # zypper
+alias z='zypper'
 alias zup='sudo zypper dup'
-alias zi='sudo zypper install'
+alias zin='sudo zypper install'
 alias zs='zypper search'
 alias zps='zypper ps -s'
 
@@ -76,7 +76,7 @@ alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --trac
 #alias faush='ssh faui0sr0.cs.fau.de'
 #alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo[height<=?1080]+bestaudio/best'
 alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo+bestaudio/best'
-alias cobbler='cd ~/git/work/cobbler'
+alias dcobbler='cd ~/git/work/cobbler'
 alias emacs='emacs -nw'
 
 # A nicer ps-output. We need to specify user:12 because otherwise usernames
