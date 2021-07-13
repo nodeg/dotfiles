@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top",
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 25, // Waybar height (to be removed for auto height)
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -38,7 +38,7 @@
             "7": "Misc3",
             "8": "",
             "9": "",
-            "10": "Passwords"
+            "10": "PW"
         }
     },
     "sway/mode": {
@@ -82,15 +82,24 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%H:%M %a, %d.%m.%y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "<span foreground='#928374'></span> {:%a %d.%m.%y <span foreground='#928374'></span> %H:%M}",
         "interval": 15
     },
     "cpu": {
-        "format": "{usage:3}% ",
+        "format": "<span foreground='#928374'></span> {usage}%",
         "tooltip": false
+            "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
     "memory": {
-        "format": "{:3}% "
+        "format": "<span foreground='#928374'></span> {}%",
+            "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
     "temperature": {
         "critical-threshold": 80,
@@ -121,7 +130,7 @@
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "IP: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "DC ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
     },
     "network#vpn": {
@@ -161,3 +170,4 @@
     }
 }
 
+// vi: ft=json
