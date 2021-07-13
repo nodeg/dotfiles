@@ -1,0 +1,142 @@
+#!/usr/bin/env zsh
+
+## generic
+
+command -v curlie    &> /dev/null    && alias curl='curlie'
+command -v dfrs      &> /dev/null    && alias df='dfrs'
+command -v git       &> /dev/null    && alias diff='git diff --no-index'
+command -v rmtrash   &> /dev/null    && alias rm='rmtrash -rf'
+command -v bat       &> /dev/null    && alias c='bat'                                              || alias c='cat'
+command -v fd        &> /dev/null    && alias fd='fd --hidden --follow'                            || alias fd='find . -name'
+command -v rg        &> /dev/null    && alias rg='rg --hidden --follow --smart-case 2>/dev/null'   || alias rg='grep --color=auto --exclude-dir=.git -R'
+command -v exa       &> /dev/null    && alias ls='exa --group --git --group-directories-first'     || alias ls='ls --color=auto --group-directories-first -h'
+command -v exa       &> /dev/null    && alias ll='ls -la'                                          || alias ll='ls -lA'
+command -v exa       &> /dev/null    && alias la='ll -a'                                           || alias la='ll -A'
+command -v exa       &> /dev/null    && alias lk='ll -s=size'                                      || alias lk='ll -r --sort=size'
+command -v exa       &> /dev/null    && alias lm='ll -s=modified'                                  || alias lm='ll -r --sort=time'
+command -v dog       &> /dev/null    && alias d='dog'                                              || alias d='dig +nocmd +multiline +noall +answer'
+
+alias k='k -h'
+alias ka='k -ha'
+alias ..='cd ..'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ln='ln -i'
+if [[ $(uname) == 'Linux' ]]; then
+    alias rm='rm -I --preserve-root'
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
+    alias grep='grep --color=auto'
+elif [[ $(uname) == 'Darwin' ]]; then
+fi
+
+alias mkdir='mkdir -p'
+alias df='df -h'
+alias du='du -h -d 2'
+alias diff='diff --color=auto'
+# show me files matching "ls grep"
+alias lsg='ll | grep' alias vi='nvim'
+alias v='nvim'
+alias ip='ip --color=auto'
+alias weather='clear && curl wttr.in'
+alias hbrew='cd /usr/local/Homebrew'
+alias hbrewk=' cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask'
+
+# git
+alias gs='git status'
+alias gc='git commit -v --signoff'
+alias ga='git add'
+alias gca='git commit -v -a --signoff'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git log'
+alias glo='git log --oneline'
+alias gp='git push'
+alias gpl='git pull'
+alias gfu='git fetch upstream'
+alias grb='git rebase'
+
+# osc
+alias os='osc status'
+alias ou='osc update'
+alias oa='osc add'
+alias or='osc rm'
+alias oc='osc ci'
+alias od='osc diff'
+alias ob='osc build --no-init'
+alias obc='osc build --clean'
+alias iosc="osc -A https://api.suse.de"
+
+# docker
+alias dp='docker ps'
+alias dpa='docker ps -a'
+alias dcp='docker container prune'
+alias di='docker image list'
+alias dip='docker image prune'
+alias dirm='docker image rm'
+
+# zypper
+alias z='zypper'
+alias zup='sudo zypper dup'
+alias zin='sudo zypper install'
+alias zs='z search'
+alias zps='z ps -s'
+
+## systemctl
+alias sys='systemctl'
+alias status='sys status'
+alias start='sys start'
+alias stop='sys stop'
+alias restart='sys restart'
+alias sen='sys enable'
+alias sdis='sys disable'
+alias reload='sys daemon-reload'
+alias timers='sys list-timers'
+
+# special
+alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
+#alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo[height<=?1080]+bestaudio/best'
+alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo+bestaudio/best'
+alias dcobbler='cd ~/git/work/cobbler'
+alias emacs='emacs -nw'
+
+# A nicer ps-output. We need to specify user:12 because otherwise usernames
+# such as 'sphinxsearch' or 'libvirt-qemu' are displayed as user IDs. According
+# to the procps source, this is specified in The Open Group Base Specifications
+# Issue 6 (IEEE Std 1003.1, 2004 Edition).
+alias p='ps -A f -o user:12,pid,priority,ni,pcpu,pmem,args'
+
+# special functions
+
+# extract any compressed file
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1 ;;
+            *.tar.gz)    tar xzf $1 ;;
+            *.bz2)       bunzip2 $1 ;;
+            *.rar)       rar x $1 ;;
+            *.gz)        gunzip $1 ;;
+            *.tar)       tar xf $1 ;;
+            *.tbz2)      tar xjf $1 ;;
+            *.tgz)       tar xzf $1 ;;
+            *.zip)       unzip $1 ;;
+            *.Z)         uncompress $1 ;;
+            *.7z)        7z x $1 ;;
+            *)           echo "extract() cannot extract '$1'" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# mkdir and cd
+mcd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+rc() {
+    echo "rootconnect to $1"
+    ssh root@"$1"
+}

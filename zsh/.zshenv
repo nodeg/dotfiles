@@ -1,60 +1,47 @@
-# see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
-typeset -U path
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
+#
+# Do not modify this file unless you know exactly what you are doing.
+# It is strongly recommended to keep all shell customization and configuration
+# (including exported environment variables such as PATH) in ~/.zshrc or in
+# files sourced from ~/.zshrc. If you are certain that you must export some
+# environment variables in ~/.zshenv, do it where indicated by comments below.
 
-# PATH
-if [[ $(uname) == 'Darwin' ]]; then
-    path=(/usr/local/opt/ruby/bin snap/bin ~/.cargo/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
-else
-   path=(~/snap/bin ~/bin ~/git/private/diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin ~/.emacs.d/bin $path)
+if [ -n "${ZSH_VERSION-}" ]; then
+  : ${ZDOTDIR:=~}
+  setopt no_global_rcs
+  if [[ -o no_interactive && -z "${Z4H_BOOTSTRAPPING-}" ]]; then
+    return
+  fi
+  setopt no_rcs
+  unset Z4H_BOOTSTRAPPING
+
+  # If you are certain that you must export some environment variables
+  # in ~/.zshenv (see comments at the top!), do it here:
+  #
+  #   export GOPATH=$HOME/go
+  #
+  # Do not change anything else in this file.
 fi
 
-fpath=(~/git/lab $fpath)
+Z4H_URL="https://raw.githubusercontent.com/romkatv/zsh4humans/v5"
+: "${Z4H:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh4humans/v5}"
 
+umask o-w
 
-# Ruby
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+if [ ! -e "$Z4H"/z4h.zsh ]; then
+  mkdir -p -- "$Z4H" || return
+  >&2 printf '\033[33mz4h\033[0m: fetching \033[4mz4h.zsh\033[0m\n'
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
+  elif command -v wget >/dev/null 2>&1; then
+    wget -O-   -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
+  else
+    >&2 printf '\033[33mz4h\033[0m: please install \033[32mcurl\033[0m or \033[32mwget\033[0m\n'
+    return 1
+  fi
+  mv -- "$Z4H"/z4h.zsh.$$ "$Z4H"/z4h.zsh || return
 fi
 
-# Load 8000 lines of history, but save O(∞)
-HISTSIZE=9000
-HISTFILE=~/.zsh_history
-SAVEHIST=1000000
+. "$Z4H"/z4h.zsh || return
 
-# Print timing statistics for everything which takes longer than 5 seconds of
-# user + system time ('sleep 6' does not work because of 0% user/system time!).
-REPORTTIME=5
-
-# Do not save duplicate entries
-setopt HIST_IGNORE_DUPS
-setopt COMPLETE_IN_WORD
-# Share history between zsh sessions (multiple terminals/tmux)
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-export GPG_TTY=$(tty)
-
-export LC_ALL='en_US.UTF-8'
-export LANG='en_US.UTF-8'
-export MAN_POSIXLY_CORRECT=true # nicer manpage handling
-export EDITOR='nvim'
-export TERM='xterm-256color'
-#export TERM='xterm-kitty'
-export PAGER='less'
-export MANPAGER='most'
-export TERMINAL='kitty'
-export BROWSER='firefox'
-
-# long date format in ls(1)
-export TIME_STYLE=long-iso
-
-# wayland compatibility
-#enable wayland support in Firefox # NOTE: DISABLE IF BROKEN on Firefox >=73
-#export GDK_BACKEND='wayland'
-# use wayland as default for GDK stuff like LibreOffice. # NOTE: put "GDK_BACKEND=x11" before command if it doesn't run (display error)
-#export MOZ_ENABLE_WAYLAND=1
-# fix java stuff in swaywm (especially IntelliJ)
-#export _JAVA_AWT_WM_NONREPARENTING=1
-#export QT_QPA_PLATFORM=wayland-egl
-#export CLUTTER_BACKEND=wayland
-#export QT_QPA_PLATFORMTHEME="wayland"
-#export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+setopt rcs
