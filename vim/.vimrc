@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
      Plug 'hashivim/vim-terraform'                    " Terraform related plugin
+     Plug 'ajouellette/sway-vim-syntax'               " sway config syntax highlighting
      Plug 'tmux-plugins/vim-tmux'                     " tmux config file support
 call plug#end()
 
