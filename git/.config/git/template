@@ -1,15 +1,6 @@
-# <type>: (If applied, this commit will...) <subject> 
+# <type>: If applied, this commit will
 # |<----  Using a Maximum Of 50 Characters  ---->|
-
-
-# Explain why this change is being made
-# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
-
-# Provide references to any relevant issues, articles or other resources
-# Example: Github issue #23
-
-# --- COMMIT END ---
-# Type can be 
+# Type can be
 #    feat     (new feature)
 #    fix      (bug fix, semver: PATCH)
 #    refactor (refactoring production code, semver: MINOR)
@@ -18,6 +9,14 @@
 #    test     (adding or refactoring tests; no production code change)
 #    chore    (updating grunt tasks etc; no production code change)
 #    BREAKING CHANGE (introduces a breaking API change, semver: MAJOR)
+
+# Explain why this change is being made
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+
+# Provide references to any relevant issues, articles or other resources
+# Example: Github issue #23
+
 # --------------------
 # Remember to
 #   - Capitalize the subject line

@@ -2,29 +2,20 @@
     defaultBranch = main
 
 [user]
-    email = dominik@gedon.org
     name = Dominik Gedon
-    signingkey = 263BF422CC90C832
+    useConfigOnly = true
 
 [include]
-    path = .gitconfig-alias  # save alias in another file
-
-[includeIf "gitdir:~/git/private/"]
-	path = .gitconfig-private
-
-[includeIf "gitdir:~/git/work/"]
-	path = .gitconfig-work
-
-[includeIf "gitdir:/usr/local/Homebrew"]
-    path = .gitconfig-private
+    path = ~/.config/git/alias
 
 [core]
 	editor = nvim
+    excludesfile = ~/.config/git/ignore
 
 [commit]
 	gpgsign = true
 	verbose = true
-    template = ~/.gitconfig-template
+    template = ~/.config/git/template
 
 [pull]
 	rebase = true
@@ -38,6 +29,7 @@
     renames = copies  # Detect copies as well as renames
     algorithm = histogram
     mnemonicprefix = true  # see https://stackoverflow.com/a/28017534
+
 [apply]
     whitespace = fix  # Detect whitespace errors when applying a patch
 
@@ -67,3 +59,5 @@
     added = yellow
     changed = green
     untracked = cyan
+
+# vim:filetype=gitconfig expandtab shiftwidth=4
