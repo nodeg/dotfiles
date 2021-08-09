@@ -3,3 +3,7 @@
 # See https://github.com/vilhalmer/System/blob/master/dotfiles/profile#L14
 # GPG agent
 #eval $(keychain --quiet --agents ssh,gpg --eval --noask --inherit any)
+## Export environment variables.
+export GPG_TTY=$TTY
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"

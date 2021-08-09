@@ -66,8 +66,8 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 # Export environment variables.
-export GPG_TTY=$TTY
-export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+#export GPG_TTY=$TTY
+#export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
 
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
