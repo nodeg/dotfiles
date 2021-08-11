@@ -65,9 +65,12 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-# Export environment variables.
-#export GPG_TTY=$TTY
-#export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+
+# Configure pinentry to use the correct TTY
+export GPG_TTY=$TTY
+gpg-connect-agent updatestartuptty /bye >/dev/null
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
 
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path

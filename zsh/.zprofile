@@ -4,6 +4,9 @@
 # GPG agent
 #eval $(keychain --quiet --agents ssh,gpg --eval --noask --inherit any)
 ## Export environment variables.
+#
+# Configure pinentry to use the correct TTY
 export GPG_TTY=$TTY
+gpg-connect-agent updatestartuptty /bye >/dev/null
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
