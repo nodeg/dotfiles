@@ -7,9 +7,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" coc and ale copatibility
-let g:ale_disable_lsp = 1
-
 " vim plug
 call plug#begin('~/.vim/plugged')
      Plug 'junegunn/vim-plug'                         " plugin manager
@@ -55,6 +52,7 @@ let g:lightline#trailing_whitespace#indicator = '•'
 " enable highlighting and stripping whitespace on save by default
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+let g:better_whitespace_ctermcolor='red'
 
 "set to 0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1
@@ -116,9 +114,6 @@ let g:tmuxline_preset = {
 
 
 set laststatus=2
-
-" Use autocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " key mappings
 
