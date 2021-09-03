@@ -11,6 +11,9 @@ zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
 zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 rpm --import https://dl.google.com/linux/linux_signing_key.pub
 
+# osc
+zypper addrepo https://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Tumbleweed/openSUSE:Tools.repo
+
 # refresh repositories
 zypper ref
 
