@@ -1,173 +1,156 @@
 {
     "layer": "top", // Waybar at top layer
-    "position": "top",
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // "gtk-layer-shell": "false",
+    // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "custom/playerctl"
+	"sway/workspaces",
+	"sway/mode",
     ],
-    //"modules-center": [
-    //    "sway/window"
-    //],
+    "modules-center": ["sway/window"],
     "modules-right": [
-        "tray",
-        "idle_inhibitor",
-        "pulseaudio",
-        "pulseaudio#2",
-        "backlight",
-        "network#vpn",
-        "network",
-        "battery",
-        "custom/weather",
-        "clock",
-        "custom/power",
+	"custom/yubikey",
+	"idle_inhibitor",
+	"custom/dnd",
+	"pulseaudio",
+	"network",
+	"cpu",
+	"memory",
+	"temperature",
+ 	"backlight",
+	"battery",
+	"custom/layout",
+	"clock",
+	"tray"
     ],
-    //----- Modules configuration
+   // "sway/mode": {
+   //     "format": " {}"
+   // },
     "sway/workspaces": {
-        "disable-scroll": true,
         "all-outputs": false,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "Chat",
-            "5": "Misc1",
-            "6": "Misc2",
-            "7": "Misc3",
-            "8": "",
-            "9": "",
-            "10": "PW"
+        "disable-scroll": true,
+        "format": " {icon} ",
+	"format-icons": {
+        "1": "1: ",
+        "2": "2: ",
+        "3": "3: ",
+        "4": "4: ",
+        "5": "5: ",
+        "6": "6: ",
+        "7": "7: ",
+	"8": "8: ",
+        "9": "9: ",
+        "10": "0: "
         }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
     "sway/window": {
+        "max-length": 80,
         "tooltip": false
     },
+    "custom/layout": {
+        "tooltip": false,
+        "exec": "swaymsg -mrt subscribe '[\"input\"]' | jq -r --unbuffered \"select(.change == \\\"xkb_layout\\\") | .input | select(.type == \\\"keyboard\\\") | .xkb_active_layout_name | .[0:2]\""
+    },
+    "custom/dnd": {
+        "exec": "waybar-dnd",
+        "return-type": "json",
+        "signal": 2,
+        "interval": "once",
+        "on-click": "waybar-dnd toggle"
+    },
+    "custom/yubikey": {
+        "exec": "waybar-yubikey",
+        "return-type": "json"
+    },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "<span foreground='#928374'>{icon}</span>",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         }
     },
-    "custom/power": {
-        "format": "",
-        "exec": "echo hello",
-        "on-click": "$HOME/bin/spower.sh",
-        "tooltip": false,
-        "interval": "once"
-    },
-    "custom/playerctl": {
-        "exec": "$HOME/bin/playerbar.sh",
-        "interval": 1,
-        "on-click": "playerctl play-pause",
-        "max-length": 1000,
-        "tooltip": false
-    },
-    "custom/weather": {
-        "format": "{}",
-        "format-alt": "{alt}: {}",
-        "format-alt-click": "click-right",
-        "interval": 1800,
-        "return-type": "json",
-        "exec": "$HOME/bin/weather.sh",
-        "exec-if": "ping wttr.in -c1"
-    },
     "tray": {
-        // "icon-size": 21,
+        // "icon-size": 20,
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "<span foreground='#928374'></span> {:%a %d.%m.%y <span foreground='#928374'></span> %H:%M}",
-        "interval": 15
+	"format": "<span foreground='#928374'></span> {:%a, %d %b  <span foreground='#928374'></span> %H:%M}",
+	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "cpu": {
         "format": "<span foreground='#928374'></span> {usage}%",
         "tooltip": false
-            "states": {
-            "warning": 70,
-            "critical": 90
-        }
     },
     "memory": {
         "format": "<span foreground='#928374'></span> {}%",
-            "states": {
+        "states": {
             "warning": 70,
             "critical": 90
-        }
+	}
     },
     "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        "format": "{temperatureC}°C",
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "<span foreground='#928374'></span> {temperatureC}°C ",
         "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "<span foreground='#928374'>{icon}</span> {percent}%",
         "format-icons": ["", ""]
     },
     "battery": {
         "states": {
             // "good": 95,
-            "warning": 25,
+            "warning": 30,
             "critical": 15
         },
-        "format": "{capacity:3}% {icon}",
-        "format-charging": "{capacity:3}% ",
-        "format-plugged": "{capacity:3}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""],
-        "on-click": "gnome-power-statistics",
+	"format": "<span foreground='#928374'>{icon}</span> {capacity}%",
+	"format-charging": "<span foreground='#928374'></span> {capacity}%",
+        //"format": "{icon}",
+        //"format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{capacity}% {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
     },
     "network": {
-        //"interface": "wlo1", // (Optional) To force the use of this interface
-        "interval": 5,
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "IP: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "DC ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    },
-    "network#vpn": {
-        "interval": 5,
-        "interface": "tun*",
-        "format-ethernet": "VPN: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "VPN off",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+	"interval": 2,
+        "format-wifi": "<span foreground='#928374'></span> {essid}",
+        "format-ethernet": "<span foreground='#928374'></span> {ifname}",
+        "format-linked": "<span foreground='#928374'></span> {ifname}",
+        "format-disconnected": " <span foreground='#928374'></span> ",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\n {bandwidthDownBits}\n {bandwidthUpBits}",
+        //"format-wifi": "",
+        //"format-ethernet": "",
+        //"format-linked": "",
+        //"format-disconnected": "⚠",
+        //"format-alt": "{ifname} {essid} ({signalStrength}%)"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume:>3}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-muted": "<span foreground=\"#EE204D\">{volume:>3}% </span>",
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
+        "format": "<span foreground='#928374'>{icon}</span>  {volume}%",
+        "format-alt": "{volume} {icon}",
+        "format-alt-click": "click-right",
+        "format-muted": "",
         "format-icons": {
             "headphones": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
-        "interval": 10,
-        "on-click": "pavucontrol --tab 3"
-    },
-    "pulseaudio#2": {
-        "format": "{format_source}",
-        "format-source": "{volume:>3}% ",
-        "format-source-muted": "<span foreground=\"#EE204D\">{volume:>3}% </span>",
-        "interval": 10,
-        "tooltip": false,
-        "on-click": "pavucontrol --tab 4",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%"
+        "scroll-step": 10,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip": false
     }
 }
-
-// vi: ft=json

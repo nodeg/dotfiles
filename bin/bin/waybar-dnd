@@ -1,0 +1,34 @@
+#!/bin/sh
+
+marker="/tmp/waybar-dnd"
+
+show() {
+    if [ -e "$marker" ]; then
+        printf "{\"text\": \" <span foreground='#928374'></span> \", \"class\": \"on\"}\n"
+    else
+        printf "{\"text\": \" <span foreground='#928374'></span> \", \"class\": \"off\"}\n"
+    fi
+}
+
+on() {
+    makoctl set-mode dnd
+    touch "$marker"
+    pkill -RTMIN+2 -x waybar
+}
+
+off() {
+    makoctl set-mode default
+    rm -f "$marker"
+    pkill -RTMIN+2 -x waybar
+}
+
+toggle() {
+    [ -e "$marker" ] && off || on
+}
+
+case "$1" in
+    on)     on ;;
+    off)    off ;;
+    toggle) toggle ;;
+    '')     show ;;
+esac
