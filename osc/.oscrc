@@ -1,0 +1,4 @@
+[general]
+use_keyring = 1
+plaintext_passwd = 0
+checkout_no_colon = 1
