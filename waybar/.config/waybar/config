@@ -39,7 +39,7 @@
         "4": "4: ",
         "5": "5: ",
         "6": "6: ",
-        "7": "7: ",
+        "7": "7: ",
 	"8": "8: ",
         "9": "9: ",
         "10": "0: "
@@ -92,7 +92,7 @@
     },
     "temperature": {
         // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "<span foreground='#928374'></span> {temperatureC}°C ",
