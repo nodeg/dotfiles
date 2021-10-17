@@ -50,6 +50,10 @@ cask 'onyx'
 cask 'libreoffice'
 cask 'vagrant-vmware-utility'
 cask 'xquartz'
+cask 'silentknight'
+cask 'knockknock'
+cask 'oversight'
+cask 'yt-dlp'
 
 # brews
 brew 'zsh'
