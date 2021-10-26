@@ -54,6 +54,7 @@ cask 'silentknight'
 cask 'knockknock'
 cask 'oversight'
 cask 'yt-dlp'
+cask 'iina'
 
 # brews
 brew 'zsh'
