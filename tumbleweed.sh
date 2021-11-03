@@ -27,9 +27,11 @@ zypper install \
     emacs \
     git \
     htop \
+    keepassxc \
     libreoffice \
     libreoffice-l10n-de \
     libvirt \
+    maven \
     myspell-de_DE \
     nodejs \
     opi \
@@ -37,6 +39,7 @@ zypper install \
     ripgrep \
     ShellCheck \
     virt-manager \
+    yarn \
 
 ### git repositories
 git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
@@ -64,4 +67,9 @@ polkit.addRule(function(action, subject) {
 });
 EOF
 
-#
+### yarn/npm files
+
+# Font Awesome
+yarn add @fortawesome/fontawesome-free
+
+
