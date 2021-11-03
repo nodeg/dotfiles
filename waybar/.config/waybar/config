@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "position": "bottom", // position (top|bottom|left|right)
+    "position": "bottom",
     "height": 25,
     "modules-left": [
 	"sway/workspaces",
@@ -10,6 +10,7 @@
     "modules-right": [
 	"tray",
 	"custom/yubikey",
+    "custom/zypper",
 	"idle_inhibitor",
 	"custom/dnd",
 	"pulseaudio",
@@ -22,9 +23,6 @@
 	"custom/layout",
 	"clock",
     ],
-   // "sway/mode": {
-   //     "format": " {}"
-   // },
     "sway/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
@@ -32,12 +30,12 @@
 	"format-icons": {
         "1": "1: ",
         "2": "2: ",
-        "3": "3: ",
+        "3": "3: ",
         "4": "4: ",
         "5": "5: ",
         "6": "6: ",
         "7": "7: ",
-	    "8": "8: ",
+	    "8": "8: ",
         "9": "9: ",
         "10": "0: "
         }
@@ -61,6 +59,13 @@
         "exec": "waybar-yubikey",
         "return-type": "json"
     },
+    "custom/zypper": {
+        "format": "<span foreground='#928374'> {} </span>",
+        "interval": 3600,
+        "exec": "zypper lu | grep 'v |' | wc -l",
+        "exec-if": "exit 0",
+        "signal": 8
+    },
     "idle_inhibitor": {
         "format": "<span foreground='#928374'>{icon}</span>",
         "format-icons": {
@@ -69,12 +74,11 @@
         }
     },
     "tray": {
-        // "icon-size": 20,
         "spacing": 10
     },
     "clock": {
 	"format": "<span foreground='#928374'></span> {:%a, %d %b  <span foreground='#928374'></span> %H:%M}",
-	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
         "format": "<span foreground='#928374'></span> {usage}%",
@@ -88,28 +92,22 @@
 	}
     },
     "temperature": {
-        // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "<span foreground='#928374'></span> {temperatureC}°C ",
         "format-icons": ["", "", ""]
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "<span foreground='#928374'>{icon}</span> {percent}%",
         "format-icons": ["", ""]
     },
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
 	"format": "<span foreground='#928374'>{icon}</span> {capacity}%",
 	"format-charging": "<span foreground='#928374'></span> {capacity}%",
-        //"format": "{icon}",
-        //"format-charging": "",
         "format-plugged": "",
         "format-alt": "{capacity}% {time}",
         "format-icons": ["", "", "", "", ""]
@@ -118,18 +116,12 @@
         "bat": "BAT2"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "interval": 2,
-        "format-wifi": "<span foreground='#928374'></span> {essid}",
+        "format-wifi": "<span foreground='#928374'></span> {essid} ({signalStrength}%)",
         "format-ethernet": "<span foreground='#928374'></span> {ifname}",
         "format-linked": "<span foreground='#928374'></span> {ifname}",
         "format-disconnected": " <span foreground='#928374'></span> ",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\n {bandwidthDownBits}\n {bandwidthUpBits}",
-        //"format-wifi": "",
-        //"format-ethernet": "",
-        //"format-linked": "",
-        //"format-disconnected": "⚠",
-        //"format-alt": "{ifname} {essid} ({signalStrength}%)"
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\n {bandwidthDownBits}\n {bandwidthUpBits}"
     },
     "pulseaudio": {
         "format": "<span foreground='#928374'>{icon}</span>  {volume}%",
@@ -151,3 +143,5 @@
         "tooltip": false
     }
 }
+
+// vi: ft=json
