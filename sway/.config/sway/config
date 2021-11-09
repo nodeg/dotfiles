@@ -114,6 +114,7 @@ set $workspace0 workspace number 10
 assign [app_id="kitty"] $workspace1
 assign [app_id="chromium"] $workspace2
 assign [class="Hexchat"] $workspace4
+assign [class="code"] $workspace5
 assign [app_id="slack"] $workspace7
 assign [app_id="thunderbird"] $workspace8
 assign [class="KeePassXC"] $workspace10
@@ -269,6 +270,7 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec "GDK_BACKEND=x11 nm-applet --indicator"
 exec kitty
 exec chromium
+exec thunderbird
 exec keepassxc
 
 # include host specific config
