@@ -145,5 +145,9 @@ defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
+# adjust launchpad
+defaults write com.apple.dock springboard-columns -int 9
+defaults write com.apple.dock springboard-rows -int 6
+
 #Kill affected applications, so the changes apply
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
