@@ -43,6 +43,7 @@ cask 'knockknock'
 cask 'oversight'
 cask 'iina'
 cask 'disk-inventory-x'
+cask 'zsa-wally'
 
 # brews
 brew 'zsh'
