@@ -266,6 +266,7 @@ exec_always {
     tail -f $SWAYSOCK.wob | wob
 }
 
+# autostart
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec "GDK_BACKEND=x11 nm-applet --indicator"
 exec kitty
