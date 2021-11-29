@@ -25,7 +25,9 @@ zypper install \
     docker \
     docker-zsh-completions \
     emacs \
+    gdb \
     git \
+    git-delta \
     htop \
     keepassxc \
     libreoffice \
@@ -49,7 +51,7 @@ git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 # pipx
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
-pipx install virtualenv bpytop
+pipx install virtualenv bpytop colour-valgrind
 
 # docker
 gpasswd -a $USER docker
