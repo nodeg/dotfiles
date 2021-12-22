@@ -77,7 +77,8 @@
         "spacing": 10
     },
     "clock": {
-	"format": "<span foreground='#928374'></span> {:%a, %d %b  <span foreground='#928374'></span> %H:%M}",
+    "interval": 1,
+	"format": "<span foreground='#928374'></span> {:%a, %d %b  <span foreground='#928374'></span> %H:%M:%S}",
 	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
