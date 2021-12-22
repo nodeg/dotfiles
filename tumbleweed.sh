@@ -11,7 +11,7 @@ zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
 zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 rpm --import https://dl.google.com/linux/linux_signing_key.pub
 
-# osc
+# Tools for osc
 zypper addrepo https://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Tumbleweed/openSUSE:Tools.repo
 
 # refresh repositories
@@ -26,6 +26,7 @@ zypper install \
     docker-zsh-completions \
     emacs \
     gdb \
+    glibc-debuginfo \
     git \
     git-delta \
     htop \
@@ -39,7 +40,10 @@ zypper install \
     opi \
     podman \
     ripgrep \
+    rpmlint \
     ShellCheck \
+    spec-cleaner \
+    valgrind \
     virt-manager \
     yarn \
 
@@ -51,7 +55,7 @@ git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 # pipx
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
-pipx install virtualenv bpytop colour-valgrind
+pipx install virtualenv bpytop colour-valgrind pwntools
 
 # docker
 gpasswd -a $USER docker
