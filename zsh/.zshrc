@@ -151,7 +151,7 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 # Check if the .zinit directory exists
 if [ ! -d $HOME/.zinit ]; then
     mkdir $HOME/.zinit
-    git clone https://github.com/zdharma/zinit.git $HOME/.zinit/bin
+    git clone https://github.com/zdharma-continuum/zinit.git $HOME/.zinit/bin
 fi
 
 # zinit plugin manager and plugins
