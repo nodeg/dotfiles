@@ -40,7 +40,9 @@ zypper install \
     opi \
     podman \
     ripgrep \
+    rlwrap \
     rpmlint \
+    secret-tool \
     ShellCheck \
     spec-cleaner \
     valgrind \
