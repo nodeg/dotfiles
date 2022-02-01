@@ -40,6 +40,9 @@ alias lsg='ll | grep' alias vi='nvim'
 alias v='nvim'
 alias ip='ip --color=auto'
 alias weather='clear && curl wttr.in'
+alias ct='cht.sh'
+
+# Homebrew
 alias hbrew='cd /usr/local/Homebrew'
 alias hbrewk=' cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask'
 
