@@ -89,7 +89,7 @@ ftpfs_directory_timeout=900
 
 [Layout]
 output_lines=0
-left_panel_size=86
+left_panel_size=87
 top_panel_size=0
 message_visible=true
 keybar_visible=true
