@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
      Plug 'godlygeek/tabular'                         " line up text
      Plug 'ntpeters/vim-better-whitespace'            " better whitespace highlighting
      Plug 'nathanaelkane/vim-indent-guides'           " visually displaying indent levels
-     Plug 'sheerun/vim-polyglot'                      " language packs
+     "Plug 'sheerun/vim-polyglot'                      " language packs
      Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
      Plug 'RRethy/vim-illuminate'                     " highlights word under the cursor
      Plug 'hashivim/vim-terraform'                    " Terraform related plugin
