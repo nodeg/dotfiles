@@ -103,7 +103,7 @@ export PAGER='less'
 export TERMINAL='kitty'
 export BROWSER='chromium'
 export GOPATH=$HOME/go
-export DISPLAY=:1.0
+#export DISPLAY=:1.0
 # libvirt specific
 #export LIBVIRT_DEFAULT_URI=qemu:///system
 export LIBVIRT_DEFAULT_URI=qemu+ssh://dgedon@rock229.qa.prv.suse.net/system
