@@ -39,6 +39,9 @@ zstyle ':z4h:ssh:*'                   enable 'no'
 # enabled hosts.
 zstyle ':z4h:ssh:*' send-extra-files '~/.zsh-aliases'
 
+
+
+
 # Clone additional Git repositories from GitHub.
 #
 # This doesn't do anything apart from cloning the repository and keeping it
@@ -53,17 +56,18 @@ z4h init || return
 
 # Extend PATH.
 if [[ $(uname) == 'Darwin' ]]; then
-    path=(/usr/local/opt/ruby/bin snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
+    path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
 else
-   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin ~/.emacs.d/bin $GOPATH/bin $path)
+   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
 fi
 
 fpath=(~/git/lab $fpath)
 
 # Ruby
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#if which ruby >/dev/null && which gem >/dev/null; then
+#    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+#fi
 
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
@@ -99,25 +103,30 @@ export PAGER='less'
 export TERMINAL='kitty'
 export BROWSER='chromium'
 export GOPATH=$HOME/go
+export DISPLAY=:1.0
+# libvirt specific
+#export LIBVIRT_DEFAULT_URI=qemu:///system
+export LIBVIRT_DEFAULT_URI=qemu+ssh://dgedon@rock229.qa.prv.suse.net/system
 
 # long date format in ls(1)
 export TIME_STYLE=long-iso
 
 # wayland compatibility
 #enable wayland support in Firefox # NOTE: DISABLE IF BROKEN on Firefox >=73
-export GDK_BACKEND='wayland,x11'
+#export GDK_BACKEND='wayland,x11'
 # use wayland as default for GDK stuff like LibreOffice. # NOTE: put "GDK_BACKEND=x11" before command if it doesn't run (display error)
-export MOZ_ENABLE_WAYLAND=1
+#export MOZ_ENABLE_WAYLAND=1
 # fix java stuff in swaywm (especially IntelliJ)
-export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORM=wayland-egl
-export CLUTTER_BACKEND=wayland
-export QT_QPA_PLATFORMTHEME="wayland"
-export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+#export _JAVA_AWT_WM_NONREPARENTING=1
+#export QT_QPA_PLATFORM=wayland-egl
+#export CLUTTER_BACKEND=wayland
+#export QT_QPA_PLATFORMTHEME="wayland"
+#export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
 z4h source ~/.zsh-aliases
+z4h source ~/.zsh-syntax-highlighting.sh
 
 # Use additional Git repositories pulled in with `z4h install`.
 #
@@ -167,3 +176,8 @@ zplugin light hlissner/zsh-autopair
 # and quickly jump to them.
 zplugin light raxod502/wdx
 
+# colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
