@@ -105,8 +105,8 @@ export BROWSER='chromium'
 export GOPATH=$HOME/go
 #export DISPLAY=:1.0
 # libvirt specific
-#export LIBVIRT_DEFAULT_URI=qemu:///system
-export LIBVIRT_DEFAULT_URI=qemu+ssh://dgedon@rock229.qa.prv.suse.net/system
+export LIBVIRT_DEFAULT_URI=qemu:///system
+#export LIBVIRT_DEFAULT_URI=qemu+ssh://dgedon@rock229.qa.prv.suse.net/system
 
 # long date format in ls(1)
 export TIME_STYLE=long-iso
