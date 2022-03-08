@@ -4,21 +4,25 @@
 ### add repositories
 
 # code
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
+sudo zypper ar https://packages.microsoft.com/yumrepos/ms-teams teams
 
 # Google Chrome
-zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
-rpm --import https://dl.google.com/linux/linux_signing_key.pub
+sudo rpm --import https://dl.google.com/linux/linux_signing_key.pub
+sudo zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 
 # Tools for osc
-zypper addrepo https://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Tumbleweed/openSUSE:Tools.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Tumbleweed/openSUSE:Tools.repo
+
+# Tools for SUMA
+sudo zypper addrepo http://download.opensuse.org/repositories/systemsmanagement:/sumaform/openSUSE_Tumbleweed/systemsmanagement:sumaform.repo
 
 # refresh repositories
-zypper ref
+sudo zypper ref
 
 ### install packages
-zypper install \
+sudo zypper install \
     code \
     google-chrome-stable \
     chromium \
@@ -29,6 +33,7 @@ zypper install \
     glibc-debuginfo \
     git \
     git-delta \
+    gnome-keyring \
     htop \
     keepassxc \
     libreoffice \
@@ -37,6 +42,7 @@ zypper install \
     maven \
     myspell-de_DE \
     nodejs \
+    onefetch \
     opi \
     podman \
     ripgrep \
@@ -48,6 +54,9 @@ zypper install \
     valgrind \
     virt-manager \
     yarn \
+
+# SUMA related packages
+sudo zypper install --from systemsmanagement_sumaform terraform terraform-provider-libvirt
 
 ### git repositories
 git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
@@ -63,7 +72,7 @@ pipx install virtualenv bpytop colour-valgrind pwntools
 gpasswd -a $USER docker
 
 # virt-manager stuff
-gpasswd -a $USER libvirtd
+gpasswd -a $USER libvirtd qemu
 systemctl enable libvirtd
 systemctl start libvirtd
 
@@ -80,4 +89,6 @@ EOF
 # Font Awesome
 yarn add @fortawesome/fontawesome-free
 
+# several gems
+gem install colorls
 
