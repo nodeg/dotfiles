@@ -9,7 +9,7 @@
     path = ~/.config/git/alias
 
 [core]
-	editor = nvim
+    editor = nvim
     excludesfile = ~/.config/git/ignore
     pager = delta
 
@@ -17,12 +17,12 @@
     diffFilter = delta --color-only
 
 [commit]
-	gpgsign = true
-	verbose = true
+    gpgsign = true
+    verbose = true
     template = ~/.config/git/template
 
 [pull]
-	rebase = true
+    rebase = true
 
 [delta]
     syntax-theme = Dracula
@@ -41,21 +41,21 @@
     whitespace = fix  # Detect whitespace errors when applying a patch
 
 [color]
-	ui = true
+    ui = true
 
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = 11
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 
 [color "branch"]
     current = yellow reverse
