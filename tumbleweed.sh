@@ -42,6 +42,7 @@ sudo zypper install \
     maven \
     myspell-de_DE \
     nodejs \
+    obs-service-tar \
     onefetch \
     opi \
     podman \
