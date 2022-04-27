@@ -8,16 +8,11 @@ else
     echo "Found fonts dir $fonts_dir"
 fi
 
-for type in Bold Light Medium Regular Retina; do
-    file_path="${HOME}/.local/share/fonts/FiraCode-${type}.ttf"
-    file_url="https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true"
-    if [ ! -e "${file_path}" ]; then
-        echo "wget -O $file_path $file_url"
-        wget -O "${file_path}" "${file_url}"
-    else
-        echo "Found existing file $file_path"
-    fi;
-done
+version=5.2
+zip=Fira_Code_v${version}.zip
+curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
+unzip -o -q -d ${fonts_dir} ${zip}
+rm ${zip}
 
 echo "fc-cache -f"
 fc-cache -f
