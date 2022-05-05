@@ -1,0 +1,21 @@
+irp () {
+	name="$1"
+	suffix="${3:+-$3}"
+	versioninfo="${2:+-v $2}"
+	r="rubygem-$name$suffix"
+	test -d $r && return 1
+	mkdir $r
+	pushd $r
+	cp ../gem2rpm.yml .
+	if [ -n "$suffix" ]
+	then
+		echo ":version_suffix: '$suffix'" >> gem2rpm.yml
+	fi
+	touch ${r}.spec
+	osc vc -m "initial package"
+	gem fetch --platform=ruby ${2:+-v $2} $name
+	gem2rpm --config gem2rpm.yml -o *spec *gem
+	osc add $PWD
+	ob-tw && osc ci -m "initial package"
+	popd
+}
