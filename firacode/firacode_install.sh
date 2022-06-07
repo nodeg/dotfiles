@@ -8,8 +8,9 @@ else
     echo "Found fonts dir $fonts_dir"
 fi
 
-version=5.2
+version=6.2
 zip=Fira_Code_v${version}.zip
+echo "curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}"
 curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
 unzip -o -q -d ${fonts_dir} ${zip}
 rm ${zip}
