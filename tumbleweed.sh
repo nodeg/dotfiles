@@ -3,7 +3,7 @@
 
 ### add repositories
 
-# code
+# VS code, MS Teams
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
 sudo zypper ar https://packages.microsoft.com/yumrepos/ms-teams teams
@@ -24,11 +24,12 @@ sudo zypper ref
 ### install packages
 sudo zypper install \
     code \
-    google-chrome-stable \
     chromium \
+    google-chrome-stable \
     docker \
     docker-zsh-completions \
     emacs \
+    fira-code-fonts \
     gdb \
     glibc-debuginfo \
     git \
