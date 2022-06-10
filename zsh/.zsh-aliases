@@ -41,7 +41,8 @@ alias df='df -h'
 alias du='du -h -d 2'
 alias diff='diff --color=auto'
 # show me files matching "ls grep"
-alias lsg='ll | grep' alias vi='nvim'
+alias lsg='ll | grep'
+alias vi='nvim'
 alias v='nvim'
 alias ip='ip --color=auto'
 alias weather='clear && curl wttr.in'
@@ -62,8 +63,8 @@ alias gl='git log'
 alias glo='git log --oneline'
 alias gp='git push'
 alias gpl='git pull'
-alias gfu='git fetch upstream'
-alias grb='git rebase'
+alias gfu='git fetch --all'
+alias grb='git rebase --interactive'
 
 # osc
 alias os='osc status'
@@ -112,7 +113,6 @@ alias timers='sys list-timers'
 alias valgrind='colour-valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes'
 #alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo[height<=?1080]+bestaudio/best'
 alias mpv='mpv --hwdec=vaapi --hwdec-codecs=all --ytdl-format=bestvideo+bestaudio/best'
-alias dcobbler='cd ~/git/work/cobbler'
 alias emacs='emacs -nw'
 
 # A nicer ps-output. We need to specify user:12 because otherwise usernames
