@@ -92,6 +92,7 @@ export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
 export LC_TIME='de_DE.utf8'
 export LANG='en_US.UTF-8'
+export JAVA_HOME='/usr/lib64/jvm/jre-17-openjdk'
 
 # nicer manpage handling
 export MAN_POSIXLY_CORRECT=true
