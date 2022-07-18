@@ -2,3 +2,13 @@
 use_keyring = 1
 plaintext_passwd = 0
 checkout_no_colon = 1
+
+[https://api.opensuse.org]
+user=dgedon
+sshkey=work
+credentials_mgr_class=osc.credentials.TransientCredentialsManager
+
+[https://api.suse.de]
+user=dgedon
+sshkey=private
+credentials_mgr_class=osc.credentials.TransientCredentialsManager
