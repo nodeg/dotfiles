@@ -66,6 +66,7 @@ alias gpl='git pull'
 alias gf='git fetch'
 alias gfu='git fetch --all'
 alias grb='git rebase --interactive'
+alias gr='git remote -v'
 
 # osc
 alias os='osc status'
