@@ -67,4 +67,7 @@
     changed = green
     untracked = cyan
 
+[push]
+	autoSetupRemote = true
+
 # vim:filetype=gitconfig expandtab shiftwidth=4
