@@ -8,6 +8,7 @@ tap 'jesseduffield/lazygit'
 tap 'homebrew/cask-drivers'
 tap 'railwaycat/emacsmacport'
 tap 'amar1729/formulae'
+tap jorgelbg/tap
 
 # casks
 cask 'docker'
@@ -106,6 +107,7 @@ brew 'fzf'
 brew 'procs'
 brew 'procs'
 brew 'gping'
+brew 'pinentry-touchid'
 
 # stuff from the Apple App Store
 mas "Keynote", id: 409183694
