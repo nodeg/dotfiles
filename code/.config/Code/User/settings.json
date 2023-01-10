@@ -1,0 +1,51 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Dracula",
+    "editor.rulers": [
+        120
+    ],
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "telemetry.telemetryLevel": "off",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontSize": 16,
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    // Todo highlighter stuff
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    // Spell checking stuff
+    "cSpell.userWords": [
+        "Fira",
+        "highstate",
+        "rubocop",
+        "SCAP",
+        "solargraph",
+        "testsuite",
+        "todohighlight",
+        "Uyuni"
+    ],
+    // Ruby stuff
+    "ruby.useBundler": true, //run non-lint commands with bundle exec
+    "ruby.useLanguageServer": true, // use the internal language server (see below)
+    "ruby.lint": {
+        "rubocop": {
+            "useBundler": true // enable rubocop via bundler
+        },
+    },
+    "ruby.format": "rubocop",
+    "ruby.interpreter.commandPath": "/bin/ruby.ruby3.2",
+    "solargraph.diagnostics": true,
+    // Cucumber stuff
+    "cucumber.features": [
+        "testsuite/features/**/*.feature",
+        "src/test/**/*.feature",
+        "features/**/*.feature",
+        "tests/**/*.feature",
+        "*specs*/**/.feature"
+    ],
+    "cucumber.glue": [
+        "testsuite/features/**/*.rb",
+        "features/**/*.rb",
+    ],
+}
