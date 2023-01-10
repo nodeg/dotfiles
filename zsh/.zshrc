@@ -58,16 +58,16 @@ z4h init || return
 if [[ $(uname) == 'Darwin' ]]; then
     path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
 else
-   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.rvm/bin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
+   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
 fi
 
 fpath=(~/git/lab $fpath)
 
 # Ruby
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-#if which ruby >/dev/null && which gem >/dev/null; then
-#    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-#fi
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # see http://zsh.sourceforge.net/Guide/zshguide02.html#l24
 typeset -U path
@@ -169,6 +169,7 @@ source ~/.zinit/bin/zinit.zsh
 # warnings about the plugins being re-loaded.
 ZINIT[MUTE_WARNINGS]=1
 
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 zplugin light hlissner/zsh-autopair
 
 # Provides the 'wdx' function to set warp points to directories
