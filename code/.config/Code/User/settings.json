@@ -1,5 +1,6 @@
 {
     "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Dracula",
@@ -16,6 +17,7 @@
     "todohighlight.isCaseSensitive": true,
     // Spell checking stuff
     "cSpell.userWords": [
+        "autofetch",
         "Fira",
         "highstate",
         "rubocop",
@@ -48,4 +50,13 @@
         "testsuite/features/**/*.rb",
         "features/**/*.rb",
     ],
+    // Git related stuff
+    "gitlens.defaultDateLocale": null,
+    "git.autofetch": true,
+    // Markdownlint stuff
+    "markdownlint.config": {
+        "focusMode": false,
+        "default": true,
+        "MD004": { "style": "asterisk" },
+    }
 }
