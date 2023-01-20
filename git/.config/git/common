@@ -14,7 +14,7 @@
     pager = delta
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only  --features=interactive
 
 [commit]
     gpgsign = true
@@ -26,13 +26,12 @@
 
 [delta]
     syntax-theme = Dracula
-
-#[pager]
-#    # insanely beautiful diffs ==> npm install -g diff-so-fancy
-#    diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
-#    show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)
+    line-numbers = true
+    #minus-style = red bold
+    #plus-style  = normal green
 
 [diff]
+    colorMoved = default
     renames = copies  # Detect copies as well as renames
     algorithm = histogram
     mnemonicprefix = true  # see https://stackoverflow.com/a/28017534
@@ -42,20 +41,6 @@
 
 [color]
     ui = true
-
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
 
 [color "branch"]
     current = yellow reverse
@@ -69,5 +54,8 @@
 
 [push]
 	autoSetupRemote = true
+
+[merge]
+    conflictstyle = diff3
 
 # vim:filetype=gitconfig expandtab shiftwidth=4
