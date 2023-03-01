@@ -18,6 +18,7 @@
     // Spell checking stuff
     "cSpell.userWords": [
         "autofetch",
+        "Cyclomatic",
         "Fira",
         "highstate",
         "rubocop",
@@ -29,14 +30,14 @@
     ],
     // Ruby stuff
     "ruby.useBundler": true, //run non-lint commands with bundle exec
-    "ruby.useLanguageServer": true, // use the internal language server (see below)
+    "ruby.useLanguageServer": true,
     "ruby.lint": {
         "rubocop": {
             "useBundler": true // enable rubocop via bundler
         },
     },
     "ruby.format": "rubocop",
-    "ruby.interpreter.commandPath": "/bin/ruby.ruby3.2",
+    "ruby.interpreter.commandPath": "/bin/ruby",
     "solargraph.diagnostics": true,
     // Cucumber stuff
     "cucumber.features": [
@@ -58,5 +59,17 @@
         "focusMode": false,
         "default": true,
         "MD004": { "style": "asterisk" },
-    }
+    },
+    "codeQL.telemetry.enableTelemetry": false,
+    "git.openRepositoryInParentFolders": "never",
+    "githubPullRequests.pullBranch": "never",
+    "terminal.integrated.fontSize": 16,
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "spacewalk",
+        "upstream-spacewalk",
+        "upstream-uyuni",
+        "uyuni"
+    ]
 }
