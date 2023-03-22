@@ -56,7 +56,8 @@ z4h init || return
 
 # Extend PATH.
 if [[ $(uname) == 'Darwin' ]]; then
-    path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin $path)
+    path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.rvm/bin ~/.emacs.d/bin /usr/local/lib/ruby/gems/3.2.0/bin $path)
+export JAVA_HOME="$(/usr/libexec/java_home)"
 else
    path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
 fi
@@ -92,7 +93,6 @@ export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
 export LC_TIME='de_DE.utf8'
 export LANG='en_US.UTF-8'
-export JAVA_HOME='/usr/lib64/jvm/jre-17-openjdk'
 
 # nicer manpage handling
 export MAN_POSIXLY_CORRECT=true
