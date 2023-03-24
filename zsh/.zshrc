@@ -128,44 +128,31 @@ setopt COMPLETE_IN_WORD
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
 export LC_TIME='de_DE.utf8'
 export LANG='en_US.UTF-8'
 
-# nicer manpage handling
-export MAN_POSIXLY_CORRECT=true
+export MAN_POSIXLY_CORRECT=true # nicer manpage handling
 export EDITOR='nvim'
 export TERM='xterm-256color'
-#export TERM='xterm-kitty'
 export PAGER='less'
 export MANPAGER='less'
 export TERMINAL='kitty'
-export BROWSER='chromium'
+export BROWSER='google-chrome'
 export GOPATH=$HOME/go
 #export DISPLAY=:1.0
 export LIBVIRT_DEFAULT_URI=qemu:///system
-
-# long date format in ls(1)
-export TIME_STYLE=long-iso
+export TIME_STYLE=long-iso # long date format in ls(1)
 
 # wayland compatibility
-#enable wayland support in Firefox # NOTE: DISABLE IF BROKEN on Firefox >=73
 #export GDK_BACKEND='wayland,x11'
-# use wayland as default for GDK stuff like LibreOffice. # NOTE: put "GDK_BACKEND=x11" before command if it doesn't run (display error)
-#export MOZ_ENABLE_WAYLAND=1
 # fix java stuff in swaywm (especially IntelliJ)
 #export _JAVA_AWT_WM_NONREPARENTING=1
 #export QT_QPA_PLATFORM=wayland-egl
 #export CLUTTER_BACKEND=wayland
 #export QT_QPA_PLATFORMTHEME="wayland"
 #export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -220,8 +207,7 @@ alias mkdir='mkdir -p'
 alias df='df -h'
 alias du='du -h -d 2'
 alias diff='diff --color=auto'
-# show me files matching "ls grep"
-alias lsg='ll | grep'
+alias lsg='ll | grep' # show me files matching "ls grep"
 alias vi='nvim'
 alias v='nvim'
 alias ip='ip --color=auto'
@@ -303,7 +289,7 @@ alias emacs='emacs -nw'
 # Issue 6 (IEEE Std 1003.1, 2004 Edition).
 alias p='ps -A f -o user:12,pid,priority,ni,pcpu,pmem,args'
 
-# special functions
+###### special functions ######
 
 # extract any compressed file
 extract() {
@@ -341,9 +327,7 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-
-# colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
+##############################
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
