@@ -24,6 +24,7 @@ cask 'texmaker'
 cask 'mactex'
 cask 'tex-live-utility'
 cask 'font-fira-code'
+cask 'font-symbols-only-nerd-font'
 cask 'visual-studio-code'
 cask 'tunnelblick'
 cask 'mpv'
@@ -50,6 +51,7 @@ cask 'zsa-wally'
 brew 'zsh'
 brew 'zsh-completion'
 brew 'pip-completion'
+brew 'peco'
 brew 'gh'
 brew 'neovim'
 brew 'stow'
@@ -114,8 +116,3 @@ mas "Keynote", id: 409183694
 mas 'Pages', id: 409201541
 mas 'Numbers', id: 409203825
 mas "Amphetamine", id: 937984704
-mas "Notability", id: 360593530
-mas "Affinity Photo", id: 824183456
-mas "Affinity Designer", id: 824171161
-mas "Affinity Publisher", id: 881418622
-mas "AdBlock Pro", id: 1018301773
