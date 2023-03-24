@@ -89,9 +89,26 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions fast-syntax-highlighting z colored-man-pages)
+plugins=(aliases
+         colored-man-pages
+         evalcache
+         fast-syntax-highlighting
+         fzf
+         gh
+         git
+         ruby
+         salt
+         sudo
+         terraform
+         tmux
+         zsh-autosuggestions
+         zsh-peco-history
+        )
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -Uz zcalc
+zmodload zsh/zprof
 
 # User configuration
 
@@ -169,20 +186,20 @@ command -v curlie    &> /dev/null    && alias curl='curlie'
 command -v dfrs      &> /dev/null    && alias df='dfrs'
 command -v git       &> /dev/null    && alias diff='git diff --no-index'
 command -v rmtrash   &> /dev/null    && alias rm='rmtrash -rf'
-command -v bat       &> /dev/null    && alias c='bat'                                              || alias c='cat'
-command -v fd        &> /dev/null    && alias fd='fd --hidden --follow'                            || alias fd='find . -name'
-command -v rg        &> /dev/null    && alias rg='rg --hidden --follow --smart-case 2>/dev/null'   || alias rg='grep --color=auto --exclude-dir=.git -R'
-#command -v exa       &> /dev/null    && alias ls='exa --group --git --group-directories-first'     || alias ls='ls --color=auto --group-directories-first -h'
-#command -v exa       &> /dev/null    && alias ll='ls -l'                                           || alias ll='ls -l'
-#command -v exa       &> /dev/null    && alias la='ll -a'                                           || alias la='ll -A'
-#command -v exa       &> /dev/null    && alias lk='ll -s=size'                                      || alias lk='ll -r --sort=size'
-#command -v exa       &> /dev/null    && alias lm='ll -s=modified'                                  || alias lm='ll -r --sort=time'
-command -v colorls       &> /dev/null    && alias ls='colorls --dark'     || alias ls='ls --color=auto -h'
-command -v colorls       &> /dev/null    && alias ll='ls -l'                                           || alias ll='ls -l'
-command -v colorls       &> /dev/null    && alias la='ll -a'                                           || alias la='ll -A'
-command -v colorls       &> /dev/null    && alias lk='ll -s=size'                                      || alias lk='ll -r --sort=size'
-command -v colorls       &> /dev/null    && alias lm='ll -s=modified'                                  || alias lm='ll -r --sort=time'
-command -v dog       &> /dev/null    && alias d='dog'                                              || alias d='dig +nocmd +multiline +noall +answer'
+command -v bat       &> /dev/null    && alias c='bat'                                             || alias c='cat'
+command -v fd        &> /dev/null    && alias fd='fd --hidden --follow'                           || alias fd='find . -name'
+command -v rg        &> /dev/null    && alias rg='rg --hidden --follow --smart-case 2>/dev/null'  || alias rg='grep --color=auto --exclude-dir=.git -R'
+#command -v exa      &> /dev/null    && alias ls='exa --group --git --group-directories-first'    || alias ls='ls --color=auto --group-directories-first -h'
+#command -v exa      &> /dev/null    && alias ll='ls -l'                                          || alias ll='ls -l'
+#command -v exa      &> /dev/null    && alias la='ll -a'                                          || alias la='ll -A'
+#command -v exa      &> /dev/null    && alias lk='ll -s=size'                                     || alias lk='ll -r --sort=size'
+#command -v exa      &> /dev/null    && alias lm='ll -s=modified'                                 || alias lm='ll -r --sort=time'
+command -v colorls   &> /dev/null    && alias ls='colorls --dark'                                 || alias ls='ls --color=auto -h'
+command -v colorls   &> /dev/null    && alias ll='ls -l'                                          || alias ll='ls -l'
+command -v colorls   &> /dev/null    && alias la='ll -a'                                          || alias la='ll -A'
+command -v colorls   &> /dev/null    && alias lk='ll -s=size'                                     || alias lk='ll -r --sort=size'
+command -v colorls   &> /dev/null    && alias lm='ll -s=modified'                                 || alias lm='ll -r --sort=time'
+command -v dog       &> /dev/null    && alias d='dog'                                             || alias d='dig +nocmd +multiline +noall +answer'
 
 alias k='k -h'
 alias ka='k -ha'
