@@ -149,5 +149,20 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 defaults write com.apple.dock springboard-columns -int 9
 defaults write com.apple.dock springboard-rows -int 6
 
+# disable more animations
+defaults write -g NSScrollViewRubberbanding -int 0
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSScrollAnimationEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
+defaults write -g QLPanelAnimationDuration -float 0
+defaults write -g NSScrollViewRubberbanding -bool false
+defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
+defaults write com.apple.dock springboard-show-duration -float 0
+defaults write com.apple.dock springboard-hide-duration -float 0
+defaults write com.apple.dock springboard-page-duration -float 0
+defaults write NSGlobalDomain NSWindowResizeTime .001
+
 #Kill affected applications, so the changes apply
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
