@@ -1,3 +1,6 @@
+# vim: foldmethod=marker
+# Oh-My-Zsh {{{1
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,23 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-if [[ $(uname) == 'Darwin' ]]; then
-    path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.emacs.d/bin /usr/local/lib/ruby/gems/3.2.0/bin $path)
-export JAVA_HOME="$(/usr/libexec/java_home)"
-else
-   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
-fi
-
-fpath=(~/git/lab $fpath)
-
-# Ruby
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -29,14 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true" # Use case-sensitive completion
+DISABLE_MAGIC_FUNCTIONS=true # Fix slow paste
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -49,12 +29,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -103,9 +77,39 @@ plugins=(aliases
          tmux
          zsh-autosuggestions
          zsh-peco-history
-        )
-
+)
 source $ZSH/oh-my-zsh.sh
+
+# PATH {{{1
+
+# If you come from bash you might have to change your $PATH.
+if [[ $(uname) == 'Darwin' ]]; then
+    path=(/usr/local/opt/ruby/bin /snap/bin ~/.cargo/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin ~/.emacs.d/bin /usr/local/lib/ruby/gems/3.2.0/bin $path)
+export JAVA_HOME="$(/usr/libexec/java_home)"
+else
+   path=(~/snap/bin ~/bin ~/.diff-so-fancy ~/.local/bin /usr/local/sbin ~/.emacs.d/bin $GOPATH/bin ~/.cargo/bin $path)
+fi
+
+fpath=(~/git/lab $fpath)
+
+# Ruby
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# ZSH {{{1
+
+# Workaround for https://github.com/zsh-users/zsh-completions/issues/603
+if [[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ]]; then
+  fpath+="${ZSH_CUSTOM}/plugins/zsh-completions/src"
+fi
+
+if [[ -n "${HOMEBREW_PREFIX+1}" ]]; then
+    fpath+="${HOMEBREW_PREFIX}/share/zsh/site-functions"
+fi
 
 autoload -Uz zcalc
 zmodload zsh/zprof
@@ -122,11 +126,35 @@ HISTFILE=~/.zsh_history
 # user + system time ('sleep 6' does not work because of 0% user/system time!).
 REPORTTIME=5
 
-setopt HIST_IGNORE_ALL_DUPS # ignore duplicated commands history list
+# Apply sensisble zsh settings
+setopt ALWAYS_TO_END        # full completions move cursor to the end
+setopt AUTO_CD              # `dirname` is equivalent to `cd dirname`
+setopt AUTO_PARAM_SLASH     # if completed parameter is a directory, add a trailing slash
+setopt AUTO_PUSHD           # `cd` pushes directories to the directory stack
+setopt CHASE_LINKS          # Resolve symbolic links to their true values when changing directory
+setopt COMPLETE_IN_WORD     # complete from the cursor rather than from the end of the word
+setopt C_BASES              # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
+setopt EXTENDED_GLOB        # more powerful globbing
+setopt INTERACTIVE_COMMENTS # allow comments in command line
+setopt MULTIOS              # allow multiple redirections for the same fd
+setopt NO_BG_NICE           # don't nice background jobs
+setopt PATH_DIRS            # perform path search even on command names with slashes
+setopt correct              # Correct typos
+
+# ignore duplicated commands history list
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
 setopt COMPLETE_IN_WORD
 # Share history between zsh sessions (multiple terminals/tmux)
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+
+
+# Exports {{{1
 
 export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
@@ -153,6 +181,8 @@ export TIME_STYLE=long-iso # long date format in ls(1)
 #export CLUTTER_BACKEND=wayland
 #export QT_QPA_PLATFORMTHEME="wayland"
 #export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+
+# Aliases {{{1
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -289,7 +319,7 @@ alias emacs='emacs -nw'
 # Issue 6 (IEEE Std 1003.1, 2004 Edition).
 alias p='ps -A f -o user:12,pid,priority,ni,pcpu,pmem,args'
 
-###### special functions ######
+# Functions {{{1
 
 # extract any compressed file
 extract() {
@@ -327,7 +357,6 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-##############################
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
