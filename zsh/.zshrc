@@ -78,7 +78,7 @@ plugins=(aliases
          zsh-autosuggestions
          zsh-peco-history
 )
-source $ZSH/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # PATH {{{1
 
@@ -360,3 +360,5 @@ timezsh() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
