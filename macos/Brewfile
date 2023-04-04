@@ -48,6 +48,7 @@ cask 'disk-inventory-x'
 cask 'zsa-wally'
 
 # brews
+brew chezmoi
 brew 'zsh'
 brew 'zsh-completion'
 brew 'pip-completion'
