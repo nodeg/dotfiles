@@ -163,7 +163,8 @@ export LANG='en_US.UTF-8'
 
 export MAN_POSIXLY_CORRECT=true # nicer manpage handling
 export EDITOR='nvim'
-export TERM='xterm-256color'
+#export TERM='xterm-256color'
+export TERM='xterm-kitty'
 export PAGER='less'
 export MANPAGER='less'
 export TERMINAL='kitty'
@@ -243,6 +244,7 @@ alias v='nvim'
 alias ip='ip --color=auto'
 alias weather='clear && curl wttr.in'
 alias ct='cht.sh'
+alias ch='chezmoi'
 
 # Homebrew
 alias hbrew='cd /usr/local/Homebrew'
