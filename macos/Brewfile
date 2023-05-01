@@ -11,7 +11,7 @@ tap 'amar1729/formulae'
 tap jorgelbg/tap
 
 # casks
-cask 'docker'
+cask 'colima'
 cask 'eloston-chromium'
 cask 'google-chrome-dev'
 cask 'firefox'
