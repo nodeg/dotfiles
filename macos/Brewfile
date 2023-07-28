@@ -12,7 +12,6 @@ tap 'jorgelbg/tap'
 tap 'mykolaharmash/git-jump'
 
 # casks
-cask 'colima'
 cask 'google-chrome-dev'
 cask 'firefox'
 cask 'thunderbird'
@@ -46,6 +45,9 @@ cask 'zsa-wally'
 
 
 # brews
+brew 'colima'
+brew 'docker'
+brew 'docker-buildx'
 brew 'lsd'
 brew 'clipboard'
 brew 'asdf'
