@@ -12,10 +12,18 @@ end
 
 -- This is where you actually apply your config choices
 
+-- Color scheme and font
 config.color_scheme = 'Dracula (Official)'
 config.font = wezterm.font 'Fira Code'
 
--- config.term = 'wezterm'
+-- do not hide mouse cursor due to bug
+-- see https://github.com/wez/wezterm/issues/3726
+config.hide_mouse_cursor_when_typing = false
+
+-- https://wezfurlong.org/wezterm/config/lua/config/term.html
+config.term = 'xterm-256color'
+
+
 
 -- and finally, return the configuration to wezterm
 return config
