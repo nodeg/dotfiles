@@ -8,16 +8,15 @@ if status is-interactive
   set -x -g LC_ALL en_US.UTF-8
   set -x -g LANG en_US.UTF-8
   set -x -g LC_TIME de_DE.utf8
-  set -x -g PATH ~/go/bin $PATH # go bin folder
-  set -x -g PATH ~/.cargo/bin $PATH # rust bin folder
-  set -x -g PATH ~/bin ~/.local/bin $PATH # user bin folder
+  set -x -g PATH ~/go/bin $PATH
+  set -x -g PATH /usr/local/lib/ruby/gems/3.3.0/bin $PATH
+  set -x -g PATH ~/.cargo/bin $PATH
+  set -x -g PATH ~/bin ~/.local/bin $PATH
   set -x -g BAT_THEME Dracula
 
   fish_config theme choose "dracula"
 
-
   ##### aliases #####
-
   command -v curlie    &> /dev/null    && alias curl='curlie'
   command -v dfrs      &> /dev/null    && alias df='dfrs'
   command -v git       &> /dev/null    && alias diff='git diff --no-index'
@@ -34,7 +33,6 @@ if status is-interactive
   alias cp='cp -i'
   alias mv='mv -i'
   alias ln='ln -i'
-  # alias rm='rm -I --preserve-root'
   alias chown='chown --preserve-root'
   alias chmod='chmod --preserve-root'
   alias chgrp='chgrp --preserve-root'
@@ -64,6 +62,7 @@ if status is-interactive
   alias gl='git log --show-signature'
   alias glo='git log --oneline'
   alias gp='git push'
+  alias gpf='git push --force-with-lease'
   alias gpl='git pull'
   alias gf='git fetch'
   alias gfu='git fetch --all'
@@ -164,4 +163,3 @@ end
 zoxide init fish | source
 # Starship prompt
 starship init fish | source
-
