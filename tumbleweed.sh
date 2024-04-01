@@ -1,16 +1,6 @@
 #!/bin/bash
-# WIP
 
 ### add repositories
-
-# VS code, MS Teams
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
-sudo zypper ar https://packages.microsoft.com/yumrepos/ms-teams teams
-
-# Google Chrome
-sudo rpm --import https://dl.google.com/linux/linux_signing_key.pub
-sudo zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome
 
 # Tools for osc
 sudo zypper addrepo https://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Tumbleweed/openSUSE:Tools.repo
@@ -23,13 +13,12 @@ sudo zypper ref
 
 ### install packages
 sudo zypper install \
-    code \
-    chromium \
-    google-chrome-stable \
+    bat \
     docker \
     docker-zsh-completions \
     emacs \
     fira-code-fonts \
+    fish \
     gdb \
     glibc-debuginfo \
     git \
@@ -40,8 +29,11 @@ sudo zypper install \
     libreoffice \
     libreoffice-l10n-de \
     libvirt \
-    maven \
+    lsd \
+    mc \
+    mpv \
     myspell-de_DE \
+    neovim \
     nodejs \
     obs-service-tar \
     onefetch \
@@ -53,27 +45,35 @@ sudo zypper install \
     secret-tool \
     ShellCheck \
     spec-cleaner \
+    starship \
     valgrind \
     virt-manager \
     yarn \
+    wezterm \
+    zoxide \
+
+# packages via OPI
+opi vscode
+opi vscodium
+opi slack
+opi google-chrome
 
 # SUMA related packages
 sudo zypper install --from systemsmanagement_sumaform terraform terraform-provider-libvirt
 
 ### git repositories
-git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
 git clone https://github.com/so-fancy/diff-so-fancy.git $HOME/.diff-so-fancy
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
-# pipx
+### Python packages
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 pipx install virtualenv bpytop colour-valgrind pwntools
 
-# docker
+### Docker
 gpasswd -a $USER docker
 
-# virt-manager stuff
+### libvirt
 gpasswd -a $USER libvirtd qemu
 systemctl enable libvirtd
 systemctl start libvirtd
@@ -92,5 +92,4 @@ EOF
 yarn add @fortawesome/fontawesome-free
 
 # several gems
-gem install colorls
-
+gem install rubocop
