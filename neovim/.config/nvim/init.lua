@@ -16,18 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins are located in their own module
 require("lazy").setup("plugins", {
-  install = {
-    colorscheme = { "dracula" },
-  },
   checker = {
+    -- automatically check for plugin updates
     enabled = true,
     notify = false,
   },
   change_detection = {
-    notify = false,
+    -- automatically check for config file changes and reload the ui
+    notify = true,
   },
 })
 
-require 'colorizer'.setup()
-require("bufferline").setup{}
-require('gitsigns').setup{}
+-- require 'colorizer'.setup()
+-- require("bufferline").setup{}
+-- require('gitsigns').setup{}

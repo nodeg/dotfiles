@@ -11,10 +11,13 @@ return {
           enable = true,
         },
         -- enable indentation
-        indent = { enable = true },
+        indent = {
+          enable = true
+        },
         -- ensure these language parsers are installed
         ensure_installed = {
           "bash",
+          "c",
           "css",
           "dockerfile",
           "fish",
