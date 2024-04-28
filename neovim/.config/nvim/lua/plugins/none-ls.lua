@@ -1,7 +1,8 @@
+-- https://github.com/nvimtools/none-ls.nvim
 return {
-  "nvimtools/none-ls.nvim", -- configure formatters & linters
+  "nvimtools/none-ls.nvim",
   lazy = true,
-  -- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
   },
@@ -12,11 +13,11 @@ return {
 
     mason_null_ls.setup({
       ensure_installed = {
-        "black", -- python formatter
+        "black", -- Python formatter
         "prettier", -- prettier formatter
-        "pylint", -- python linter
-        "rubocop",
-        "stylua", -- lua formatter
+        "pylint", -- Python linter
+        "rubocop", -- Ruby linter
+        "stylua", -- Lua formatter
       },
     })
 

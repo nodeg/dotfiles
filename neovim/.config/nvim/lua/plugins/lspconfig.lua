@@ -1,3 +1,4 @@
+-- https://github.com/neovim/nvim-lspconfig
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
@@ -9,7 +10,10 @@ return {
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap -- for conciseness
-		local opts = { noremap = true, silent = true }
+		local opts = {
+			noremap = true,
+			silent = true
+		}
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
@@ -58,24 +62,11 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-
-		-- configure HTML server
-		lspconfig.html.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure Docker server
-		lspconfig.dockerls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
 
 		-- configure Python server
 		lspconfig.pyright.setup({
@@ -84,7 +75,7 @@ return {
 		})
 
 		-- configure Ruby server
-		lspconfig.ruby_ls.setup({
+		lspconfig.ruby_lsp.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
@@ -101,7 +92,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		-- configure Terraform server
+		-- configure YAML server
 		lspconfig.yamlls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
