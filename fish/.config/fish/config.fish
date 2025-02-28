@@ -9,7 +9,7 @@ if status is-interactive
   set -x -g LANG en_US.UTF-8
   set -x -g LC_TIME de_DE.utf8
   set -x -g PATH ~/go/bin $PATH
-  set -x -g PATH /usr/local/lib/ruby/gems/3.3.0/bin $PATH
+  set -x -g PATH /usr/local/lib/ruby/gems/3.4.0/bin $PATH
   set -x -g PATH ~/.cargo/bin $PATH
   set -x -g PATH ~/bin ~/.local/bin $PATH
   set -x -g BAT_THEME Dracula
