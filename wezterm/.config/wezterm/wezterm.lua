@@ -24,9 +24,12 @@ config.hide_mouse_cursor_when_typing = false
 -- https://wezfurlong.org/wezterm/config/lua/config/term.html
 config.term = 'xterm-256color'
 
+config.max_fps = 120
+
 config.automatically_reload_config = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
+config.exit_behavior = 'Close'
 
 -- always start maximised
 wezterm.on('gui-startup', function(cmd)
