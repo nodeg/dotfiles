@@ -6,9 +6,10 @@
     name = Dominik Gedon
     signingkey = 04ECBFEDF6E72314
 
-# vim:filetype=gitconfig expandtab shiftwidth=4
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
+# vim:filetype=gitconfig expandtab shiftwidth=4

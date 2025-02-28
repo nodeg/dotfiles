@@ -7,3 +7,10 @@
     signingkey = 263BF422CC90C832
 
 # vim:filetype=gitconfig expandtab shiftwidth=4
+[maintenance]
+	repo = /Users/dgedon/git/uyuni
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
