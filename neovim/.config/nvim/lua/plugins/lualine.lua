@@ -104,7 +104,7 @@ return {
           end,
         },
       },
-      extensions = { "fugitive", "lazy", "toggleterm", "mason", "neo-tree", "trouble" },
+      extensions = { "fugitive", "lazy", "mason", "toggleterm", "neo-tree", "trouble" },
     })
   end,
 }

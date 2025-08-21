@@ -8,6 +8,7 @@ return {
     "MunifTanjim/nui.nvim",
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
+  lazy = false, -- neo-tree will lazily load itself
   keys = {
     { "<leader>ee", ":Neotree toggle<CR>", desc = "Toggle file explorer", silent = true },
   },
