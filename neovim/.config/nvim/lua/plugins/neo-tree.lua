@@ -16,6 +16,7 @@ return {
     local tree = require("neo-tree")
     tree.setup({
         close_if_last_window = true,
+        log_level = "warn",
         window = {
             mappings = {
                 ["<space>"] = "none",

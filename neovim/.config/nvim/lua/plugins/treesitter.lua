@@ -1,12 +1,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    config = function() 
-      -- import nvim-treesitter plugin
-      local treesitter = require("nvim-treesitter.configs")
-
-      -- configure treesitter
-      treesitter.setup({ -- enable syntax highlighting
+    branch = 'main',
+    lazy = false,
+    build = ":TSUpdate",
+    opts = {
         highlight = {
           enable = true,
         },
@@ -40,7 +38,6 @@ return {
           "vimdoc",
           "yaml",
         },
-      })
-    end,
+      },
   },
 }
