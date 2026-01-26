@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c11 -pedantic -Wall -Wextra -O0 -g3 -DFORTIFY_SOURCE=2 \
+CFLAGS = -std=c11 -pedantic -Wall -Wextra -O0 -g3 -D_FORTIFY_SOURCE=2 \
 		 -Wformat-truncation -Wstringop-truncation \
 		 -Wformat-overflow -Wstringop-overflow \
 		 -Wmissing-prototypes -Wmissing-declarations \
